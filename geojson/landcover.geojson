@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "landcover",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 72694955, "sport": "soccer", "leisure": "pitch", "amenity": null, "name": null, "website": null, "grades": null }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -97.4550779, 25.8392719 ], [ -97.4550197, 25.839129 ], [ -97.4549403, 25.839029 ], [ -97.454771, 25.8389385 ], [ -97.4546016, 25.8389242 ], [ -97.454427, 25.8389718 ], [ -97.4542894, 25.8390862 ], [ -97.4542153, 25.83921 ], [ -97.454157, 25.8401245 ], [ -97.4542206, 25.8402484 ], [ -97.4542946, 25.8403341 ], [ -97.4544164, 25.8403913 ], [ -97.4546175, 25.8404341 ], [ -97.4548556, 25.8403436 ], [ -97.4549932, 25.8402341 ], [ -97.4550779, 25.8392719 ] ] ] } },
+{ "type": "Feature", "properties": { "osm_id": 1175371386, "sport": null, "leisure": null, "amenity": "school", "name": "COBAT 02  \"Prof. Hilarino Jiménez León\"", "website": "https:\/\/www.facebook.com\/Cobat02Matamoros\/", "grades": "9-12" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -97.457607, 25.8436756 ], [ -97.4575712, 25.8415593 ], [ -97.4553791, 25.8415878 ], [ -97.4553735, 25.8419877 ], [ -97.457607, 25.8436756 ] ] ] } },
+{ "type": "Feature", "properties": { "osm_id": 884454395, "sport": null, "leisure": null, "amenity": "school", "name": "Instituto Tecnológico de Matamoros", "website": null, "grades": null }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -97.4552749, 25.8388689 ], [ -97.4522281, 25.8388234 ], [ -97.4522003, 25.8394434 ], [ -97.4519377, 25.843366 ], [ -97.4548771, 25.8454834 ], [ -97.4552749, 25.8388689 ] ] ] } }
+]
+}

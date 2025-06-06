@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "amenity_polygons",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 1175371386, "amenity": "school", "name": "COBAT 02  \"Prof. Hilarino Jiménez León\"", "website": "https:\/\/www.facebook.com\/Cobat02Matamoros\/", "grades": "9-12" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -97.457607, 25.8436756 ], [ -97.4575712, 25.8415593 ], [ -97.4553791, 25.8415878 ], [ -97.4553735, 25.8419877 ], [ -97.457607, 25.8436756 ] ] ] } },
+{ "type": "Feature", "properties": { "osm_id": 884454395, "amenity": "school", "name": "Instituto Tecnológico de Matamoros", "website": null, "grades": null }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -97.4552749, 25.8388689 ], [ -97.4522281, 25.8388234 ], [ -97.4522003, 25.8394434 ], [ -97.4519377, 25.843366 ], [ -97.4548771, 25.8454834 ], [ -97.4552749, 25.8388689 ] ] ] } }
+]
+}

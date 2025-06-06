@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "amenity_points",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 863200249, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.457607, 25.8436756 ] } },
+{ "type": "Feature", "properties": { "osm_id": 863202755, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.4576078, 25.8439063 ] } },
+{ "type": "Feature", "properties": { "osm_id": 11108825035, "highway": null, "amenity": "parking" }, "geometry": { "type": "Point", "coordinates": [ -97.4547634, 25.8451591 ] } },
+{ "type": "Feature", "properties": { "osm_id": 915700982, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.4518145, 25.8433586 ] } },
+{ "type": "Feature", "properties": { "osm_id": 914810426, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.4517406, 25.8434862 ] } },
+{ "type": "Feature", "properties": { "osm_id": 863201749, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.4569827, 25.8471575 ] } },
+{ "type": "Feature", "properties": { "osm_id": 914810602, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.455117, 25.8457857 ] } },
+{ "type": "Feature", "properties": { "osm_id": 8269012873, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.4550201, 25.8459022 ] } },
+{ "type": "Feature", "properties": { "osm_id": 5969632339, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.456875, 25.8472735 ] } },
+{ "type": "Feature", "properties": { "osm_id": 8310495377, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.4642442, 25.852502 ] } },
+{ "type": "Feature", "properties": { "osm_id": 914785095, "highway": "traffic_signals", "amenity": null }, "geometry": { "type": "Point", "coordinates": [ -97.4641303, 25.8526132 ] } }
+]
+}

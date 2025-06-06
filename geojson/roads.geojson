@@ -1,0 +1,3617 @@
+{
+  "type": "FeatureCollection",
+  "name": "roads",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 72695680,
+        "highway": "residential",
+        "name": "Calle Tlapaneca",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4575479,
+            25.8393207
+          ],
+          [
+            -97.4565392,
+            25.83933
+          ],
+          [
+            -97.4564902,
+            25.8393301
+          ],
+          [
+            -97.4555262,
+            25.8393099
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 72695484,
+        "highway": "residential",
+        "name": "Calle Huichol",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4575526,
+            25.8397671
+          ],
+          [
+            -97.4564946,
+            25.8397672
+          ],
+          [
+            -97.4554987,
+            25.8397677
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 72695115,
+        "highway": "tertiary",
+        "name": "Calle de Las Culturas",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4557893,
+            25.835258
+          ],
+          [
+            -97.4557636,
+            25.8357093
+          ],
+          [
+            -97.4557375,
+            25.8361667
+          ],
+          [
+            -97.455712,
+            25.8366145
+          ],
+          [
+            -97.4556862,
+            25.8370675
+          ],
+          [
+            -97.455659,
+            25.8375452
+          ],
+          [
+            -97.4556339,
+            25.8379873
+          ],
+          [
+            -97.455584,
+            25.8388624
+          ],
+          [
+            -97.4555262,
+            25.8393099
+          ],
+          [
+            -97.4554987,
+            25.8397677
+          ],
+          [
+            -97.455473,
+            25.8402126
+          ],
+          [
+            -97.4554388,
+            25.8406692
+          ],
+          [
+            -97.4554073,
+            25.8411115
+          ],
+          [
+            -97.4553791,
+            25.8415878
+          ],
+          [
+            -97.4553735,
+            25.8419877
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 72695857,
+        "highway": "residential",
+        "name": "Calle Otomí",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4575429,
+            25.8388383
+          ],
+          [
+            -97.4565819,
+            25.8388512
+          ],
+          [
+            -97.455584,
+            25.8388624
+          ],
+          [
+            -97.4550471,
+            25.8388193
+          ],
+          [
+            -97.4534056,
+            25.8388049
+          ],
+          [
+            -97.4533192,
+            25.8388005
+          ],
+          [
+            -97.4527162,
+            25.8387873
+          ],
+          [
+            -97.4521483,
+            25.8387824
+          ],
+          [
+            -97.4520323,
+            25.8387705
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 892988617,
+        "highway": "tertiary",
+        "name": "Calle Teotihuacán",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4521858,
+            25.8350842
+          ],
+          [
+            -97.4521797,
+            25.8352033
+          ],
+          [
+            -97.4521597,
+            25.8356551
+          ],
+          [
+            -97.4521435,
+            25.8360964
+          ],
+          [
+            -97.4521275,
+            25.8365544
+          ],
+          [
+            -97.4521033,
+            25.8372402
+          ],
+          [
+            -97.4520323,
+            25.8387705
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77912471,
+        "highway": "residential",
+        "name": "Guillermo Gardett",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": "Calle Gregorio Gardel",
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4533192,
+            25.8388005
+          ],
+          [
+            -97.4533839,
+            25.8372587
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77912477,
+        "highway": "residential",
+        "name": "Calle Luis Ocampo",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4528003,
+            25.8372491
+          ],
+          [
+            -97.4527162,
+            25.8387873
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889438251,
+        "highway": "tertiary",
+        "name": "Calle Teotihuacán",
+        "oneway": "yes",
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.452155,
+            25.8390021
+          ],
+          [
+            -97.4520323,
+            25.8387705
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889438252,
+        "highway": "tertiary",
+        "name": "Calle Teotihuacán",
+        "oneway": "yes",
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4520323,
+            25.8387705
+          ],
+          [
+            -97.4520192,
+            25.8390132
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 697015012,
+        "highway": "unclassified",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4521256,
+            25.8397999
+          ],
+          [
+            -97.4519935,
+            25.839764
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 697015011,
+        "highway": "unclassified",
+        "name": "Avenida Cantinflas",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4490792,
+            25.8391404
+          ],
+          [
+            -97.4502754,
+            25.8393922
+          ],
+          [
+            -97.4519935,
+            25.839764
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 72695259,
+        "highway": "residential",
+        "name": "Calle Cora",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4575614,
+            25.8401992
+          ],
+          [
+            -97.455473,
+            25.8402126
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 72695143,
+        "highway": "residential",
+        "name": "Calle Mazateca",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4575619,
+            25.8406663
+          ],
+          [
+            -97.4554388,
+            25.8406692
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 72695230,
+        "highway": "residential",
+        "name": "Calle Mixe",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4575666,
+            25.8411129
+          ],
+          [
+            -97.4554073,
+            25.8411115
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 72695370,
+        "highway": "residential",
+        "name": "Calle Coahuiteca",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4575712,
+            25.8415593
+          ],
+          [
+            -97.4563338,
+            25.8415762
+          ],
+          [
+            -97.4553791,
+            25.8415878
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350378,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4545026,
+            25.8423489
+          ],
+          [
+            -97.4545091,
+            25.8423325
+          ],
+          [
+            -97.4545209,
+            25.8421151
+          ],
+          [
+            -97.4545144,
+            25.8420949
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350370,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4543175,
+            25.8426965
+          ],
+          [
+            -97.4543215,
+            25.8425743
+          ],
+          [
+            -97.4541955,
+            25.842374
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 697015014,
+        "highway": "tertiary",
+        "name": "Avenida Mario Moreno Cantinflas",
+        "oneway": "yes",
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.457607,
+            25.8436756
+          ],
+          [
+            -97.4553735,
+            25.8419877
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 72695997,
+        "highway": "tertiary",
+        "name": "Avenida Mario Moreno Cantinflas",
+        "oneway": "yes",
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4553676,
+            25.842241
+          ],
+          [
+            -97.4558989,
+            25.8426427
+          ],
+          [
+            -97.4563826,
+            25.8430071
+          ],
+          [
+            -97.4570991,
+            25.8435323
+          ],
+          [
+            -97.4576078,
+            25.8439063
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77808682,
+        "highway": "residential",
+        "name": "Calle Tarahumara",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4570991,
+            25.8435323
+          ],
+          [
+            -97.457045,
+            25.8436059
+          ],
+          [
+            -97.4567038,
+            25.843981
+          ],
+          [
+            -97.4563454,
+            25.8439832
+          ],
+          [
+            -97.4558166,
+            25.8439817
+          ],
+          [
+            -97.455272,
+            25.8439764
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350374,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4544801,
+            25.8426949
+          ],
+          [
+            -97.4544919,
+            25.8426793
+          ],
+          [
+            -97.4544959,
+            25.8425852
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350373,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4543966,
+            25.8425755
+          ],
+          [
+            -97.4543911,
+            25.8426983
+          ],
+          [
+            -97.4543872,
+            25.8427819
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350369,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4542962,
+            25.842696
+          ],
+          [
+            -97.4542928,
+            25.8427834
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350357,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4545709,
+            25.8432655
+          ],
+          [
+            -97.4545597,
+            25.8432607
+          ],
+          [
+            -97.4544788,
+            25.8432588
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 909762332,
+        "highway": "tertiary",
+        "name": "Calle de Las Culturas",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4553735,
+            25.8419877
+          ],
+          [
+            -97.4553676,
+            25.842241
+          ],
+          [
+            -97.455272,
+            25.8439764
+          ],
+          [
+            -97.4552345,
+            25.844458
+          ],
+          [
+            -97.4552134,
+            25.8454156
+          ],
+          [
+            -97.4551719,
+            25.8456749
+          ],
+          [
+            -97.455117,
+            25.8457857
+          ],
+          [
+            -97.4550201,
+            25.8459022
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350359,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4545723,
+            25.8433481
+          ],
+          [
+            -97.4545746,
+            25.8432779
+          ],
+          [
+            -97.4545709,
+            25.8432655
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350358,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4544543,
+            25.843343
+          ],
+          [
+            -97.4544543,
+            25.8432712
+          ],
+          [
+            -97.4544623,
+            25.8432616
+          ],
+          [
+            -97.4544788,
+            25.8432588
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350366,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4542827,
+            25.8433356
+          ],
+          [
+            -97.4542666,
+            25.8435556
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77808692,
+        "highway": "residential",
+        "name": "Calle Huasteca",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4576107,
+            25.8444464
+          ],
+          [
+            -97.4552345,
+            25.844458
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77808660,
+        "highway": "residential",
+        "name": "Calle Chibcha",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4576127,
+            25.8448966
+          ],
+          [
+            -97.4575208,
+            25.8448981
+          ],
+          [
+            -97.4558883,
+            25.8449072
+          ],
+          [
+            -97.4558781,
+            25.8449317
+          ],
+          [
+            -97.4556569,
+            25.8455413
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350364,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4542751,
+            25.8437019
+          ],
+          [
+            -97.4542642,
+            25.8439332
+          ],
+          [
+            -97.454252,
+            25.8441805
+          ],
+          [
+            -97.4542424,
+            25.8443764
+          ],
+          [
+            -97.454229,
+            25.8443945
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350363,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4546206,
+            25.8442001
+          ],
+          [
+            -97.454252,
+            25.8441805
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 778503635,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4543833,
+            25.8452465
+          ],
+          [
+            -97.4544227,
+            25.8452239
+          ],
+          [
+            -97.4545278,
+            25.8451529
+          ],
+          [
+            -97.4546896,
+            25.8450851
+          ],
+          [
+            -97.4547252,
+            25.8450551
+          ],
+          [
+            -97.4547509,
+            25.8450096
+          ],
+          [
+            -97.4547562,
+            25.8449136
+          ],
+          [
+            -97.4547621,
+            25.8445179
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 778503636,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4547562,
+            25.8449136
+          ],
+          [
+            -97.4542091,
+            25.8449062
+          ],
+          [
+            -97.4538638,
+            25.8446456
+          ],
+          [
+            -97.4538442,
+            25.8446051
+          ],
+          [
+            -97.4538458,
+            25.8444468
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 778503637,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4542091,
+            25.8449062
+          ],
+          [
+            -97.4545278,
+            25.8451529
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 892233837,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4522971,
+            25.8398417
+          ],
+          [
+            -97.452387,
+            25.839855
+          ],
+          [
+            -97.4524594,
+            25.8398797
+          ],
+          [
+            -97.4538099,
+            25.8408797
+          ],
+          [
+            -97.4537368,
+            25.8409684
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 892233836,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": "parking_aisle",
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4538998,
+            25.8415061
+          ],
+          [
+            -97.4539209,
+            25.8409134
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 892233838,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4538099,
+            25.8408797
+          ],
+          [
+            -97.4539209,
+            25.8409134
+          ],
+          [
+            -97.4541063,
+            25.8409594
+          ],
+          [
+            -97.4540875,
+            25.8415146
+          ],
+          [
+            -97.4538998,
+            25.8415061
+          ],
+          [
+            -97.4537281,
+            25.8414971
+          ],
+          [
+            -97.4537368,
+            25.8409684
+          ],
+          [
+            -97.452334,
+            25.8400161
+          ],
+          [
+            -97.4523005,
+            25.8399509
+          ],
+          [
+            -97.4522971,
+            25.8398417
+          ],
+          [
+            -97.4521256,
+            25.8397999
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77912503,
+        "highway": "tertiary",
+        "name": "Avenida Gregorio Garza Flores",
+        "oneway": "yes",
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": "Calle Teotihuacán",
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4518459,
+            25.843284
+          ],
+          [
+            -97.4519182,
+            25.8431573
+          ],
+          [
+            -97.4519659,
+            25.8425267
+          ],
+          [
+            -97.4520392,
+            25.8413673
+          ],
+          [
+            -97.4521256,
+            25.8397999
+          ],
+          [
+            -97.4521499,
+            25.8392908
+          ],
+          [
+            -97.452155,
+            25.8390021
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77912511,
+        "highway": "tertiary",
+        "name": "Avenida Gregorio Garza Flores",
+        "oneway": "yes",
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": "Calle Teotihuacán",
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4520192,
+            25.8390132
+          ],
+          [
+            -97.4519935,
+            25.839764
+          ],
+          [
+            -97.4519007,
+            25.8413624
+          ],
+          [
+            -97.4518288,
+            25.8425244
+          ],
+          [
+            -97.4517884,
+            25.8431555
+          ],
+          [
+            -97.4518459,
+            25.843284
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350382,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4541268,
+            25.8420687
+          ],
+          [
+            -97.4541427,
+            25.8418476
+          ],
+          [
+            -97.4541552,
+            25.8416743
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350383,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4536492,
+            25.8418255
+          ],
+          [
+            -97.4539169,
+            25.8418375
+          ],
+          [
+            -97.4541427,
+            25.8418476
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350380,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.45364,
+            25.8419852
+          ],
+          [
+            -97.4533077,
+            25.8419672
+          ],
+          [
+            -97.4532808,
+            25.8419564
+          ],
+          [
+            -97.4532661,
+            25.8419346
+          ],
+          [
+            -97.4532798,
+            25.8416777
+          ],
+          [
+            -97.4532934,
+            25.8414244
+          ],
+          [
+            -97.453279,
+            25.8413988
+          ],
+          [
+            -97.453252,
+            25.8413836
+          ],
+          [
+            -97.4529225,
+            25.8413699
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350379,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4545144,
+            25.8420949
+          ],
+          [
+            -97.4544922,
+            25.8420862
+          ],
+          [
+            -97.4541268,
+            25.8420687
+          ],
+          [
+            -97.4539061,
+            25.8420598
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350381,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4539169,
+            25.8418375
+          ],
+          [
+            -97.4539061,
+            25.8420598
+          ],
+          [
+            -97.4538932,
+            25.8423281
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350384,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.453621,
+            25.842314
+          ],
+          [
+            -97.4538932,
+            25.8423281
+          ],
+          [
+            -97.4541958,
+            25.8423438
+          ],
+          [
+            -97.4544804,
+            25.8423584
+          ],
+          [
+            -97.4545026,
+            25.8423489
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350368,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4541958,
+            25.8423438
+          ],
+          [
+            -97.4541955,
+            25.842374
+          ],
+          [
+            -97.4541923,
+            25.8424633
+          ],
+          [
+            -97.4540638,
+            25.8426868
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350367,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4536152,
+            25.8424349
+          ],
+          [
+            -97.4530354,
+            25.8424081
+          ],
+          [
+            -97.4530067,
+            25.8424119
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350352,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4530067,
+            25.8424119
+          ],
+          [
+            -97.4529886,
+            25.842433
+          ],
+          [
+            -97.4529742,
+            25.8426271
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350354,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4532798,
+            25.8416777
+          ],
+          [
+            -97.4525777,
+            25.8416407
+          ],
+          [
+            -97.4521315,
+            25.8416172
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889214011,
+        "highway": "tertiary_link",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4519007,
+            25.8413624
+          ],
+          [
+            -97.4520392,
+            25.8413673
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350355,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4525415,
+            25.8422427
+          ],
+          [
+            -97.4525777,
+            25.8416407
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441809,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": "parking_aisle",
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.452612,
+            25.8423706
+          ],
+          [
+            -97.4521424,
+            25.8423474
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441808,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": "parking_aisle",
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4526018,
+            25.8425106
+          ],
+          [
+            -97.4521324,
+            25.8424897
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889446082,
+        "highway": "tertiary_link",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4519659,
+            25.8425267
+          ],
+          [
+            -97.4518288,
+            25.8425244
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350375,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4525948,
+            25.8426067
+          ],
+          [
+            -97.4529742,
+            25.8426271
+          ],
+          [
+            -97.453604,
+            25.8426609
+          ],
+          [
+            -97.4540638,
+            25.8426868
+          ],
+          [
+            -97.4542962,
+            25.842696
+          ],
+          [
+            -97.4543175,
+            25.8426965
+          ],
+          [
+            -97.4543911,
+            25.8426983
+          ],
+          [
+            -97.4544583,
+            25.8426999
+          ],
+          [
+            -97.4544801,
+            25.8426949
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350386,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4537281,
+            25.8414971
+          ],
+          [
+            -97.4536634,
+            25.8415785
+          ],
+          [
+            -97.4536492,
+            25.8418255
+          ],
+          [
+            -97.45364,
+            25.8419852
+          ],
+          [
+            -97.453621,
+            25.842314
+          ],
+          [
+            -97.4536152,
+            25.8424349
+          ],
+          [
+            -97.453604,
+            25.8426609
+          ],
+          [
+            -97.4535639,
+            25.8433045
+          ],
+          [
+            -97.4535568,
+            25.8434277
+          ],
+          [
+            -97.4535048,
+            25.8443305
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350371,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4540339,
+            25.8433248
+          ],
+          [
+            -97.4540638,
+            25.8426868
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350353,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4525725,
+            25.8429157
+          ],
+          [
+            -97.4532527,
+            25.8429521
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350372,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4547215,
+            25.8433546
+          ],
+          [
+            -97.4545723,
+            25.8433481
+          ],
+          [
+            -97.4544543,
+            25.843343
+          ],
+          [
+            -97.4542827,
+            25.8433356
+          ],
+          [
+            -97.4540339,
+            25.8433248
+          ],
+          [
+            -97.4535639,
+            25.8433045
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350360,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4540255,
+            25.8436916
+          ],
+          [
+            -97.4536177,
+            25.8433306
+          ],
+          [
+            -97.4535639,
+            25.8433045
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350356,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4544415,
+            25.8437088
+          ],
+          [
+            -97.4542751,
+            25.8437019
+          ],
+          [
+            -97.4540255,
+            25.8436916
+          ],
+          [
+            -97.4536321,
+            25.8436753
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350361,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4542642,
+            25.8439332
+          ],
+          [
+            -97.4540679,
+            25.8439217
+          ],
+          [
+            -97.454036,
+            25.8439083
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350362,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.454036,
+            25.8439083
+          ],
+          [
+            -97.4540232,
+            25.8438815
+          ],
+          [
+            -97.4540255,
+            25.8436916
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350377,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4535568,
+            25.8434277
+          ],
+          [
+            -97.4534209,
+            25.8434229
+          ],
+          [
+            -97.4532568,
+            25.8434178
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350385,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4534143,
+            25.8435164
+          ],
+          [
+            -97.4534209,
+            25.8434229
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350376,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4532568,
+            25.8434178
+          ],
+          [
+            -97.453254,
+            25.8435134
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441813,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": "parking_aisle",
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4532283,
+            25.8441959
+          ],
+          [
+            -97.453254,
+            25.8435134
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441814,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4533841,
+            25.8442858
+          ],
+          [
+            -97.4532283,
+            25.8441959
+          ],
+          [
+            -97.453071,
+            25.8441054
+          ],
+          [
+            -97.453083,
+            25.8435067
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441815,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.452883,
+            25.8441439
+          ],
+          [
+            -97.4529174,
+            25.8433969
+          ],
+          [
+            -97.453083,
+            25.8435067
+          ],
+          [
+            -97.453254,
+            25.8435134
+          ],
+          [
+            -97.4534143,
+            25.8435164
+          ],
+          [
+            -97.4533841,
+            25.8442858
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441803,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": "parking_aisle",
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4525907,
+            25.8426638
+          ],
+          [
+            -97.452122,
+            25.842636
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441804,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": "parking_aisle",
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4525795,
+            25.8428188
+          ],
+          [
+            -97.4521109,
+            25.8427927
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441812,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4529174,
+            25.8433969
+          ],
+          [
+            -97.4527945,
+            25.8433898
+          ],
+          [
+            -97.4526814,
+            25.8433866
+          ],
+          [
+            -97.4526659,
+            25.8437656
+          ],
+          [
+            -97.4525185,
+            25.8436603
+          ],
+          [
+            -97.4520738,
+            25.8433172
+          ],
+          [
+            -97.4520777,
+            25.8432494
+          ],
+          [
+            -97.4520908,
+            25.8430777
+          ],
+          [
+            -97.4521005,
+            25.84294
+          ],
+          [
+            -97.4521109,
+            25.8427927
+          ],
+          [
+            -97.452122,
+            25.842636
+          ],
+          [
+            -97.4521324,
+            25.8424897
+          ],
+          [
+            -97.4521424,
+            25.8423474
+          ],
+          [
+            -97.452151,
+            25.8422267
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441811,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.452151,
+            25.8422267
+          ],
+          [
+            -97.4525415,
+            25.8422427
+          ],
+          [
+            -97.452621,
+            25.842246
+          ],
+          [
+            -97.452612,
+            25.8423706
+          ],
+          [
+            -97.4526018,
+            25.8425106
+          ],
+          [
+            -97.4525948,
+            25.8426067
+          ],
+          [
+            -97.4525907,
+            25.8426638
+          ],
+          [
+            -97.4525795,
+            25.8428188
+          ],
+          [
+            -97.4525725,
+            25.8429157
+          ],
+          [
+            -97.4525691,
+            25.8429622
+          ],
+          [
+            -97.4525586,
+            25.843107
+          ],
+          [
+            -97.4525461,
+            25.8432789
+          ],
+          [
+            -97.4525185,
+            25.8436603
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441805,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": "parking_aisle",
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4525691,
+            25.8429622
+          ],
+          [
+            -97.4521005,
+            25.84294
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441806,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": "parking_aisle",
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4525586,
+            25.843107
+          ],
+          [
+            -97.4520908,
+            25.8430777
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441807,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4525461,
+            25.8432789
+          ],
+          [
+            -97.4520777,
+            25.8432494
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1218721476,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4513383,
+            25.8430201
+          ],
+          [
+            -97.4515481,
+            25.8428206
+          ],
+          [
+            -97.4516527,
+            25.8427083
+          ],
+          [
+            -97.4517386,
+            25.8426118
+          ],
+          [
+            -97.4518288,
+            25.8425244
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889441810,
+        "highway": "service",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4526659,
+            25.8437656
+          ],
+          [
+            -97.4527819,
+            25.8438561
+          ],
+          [
+            -97.4527945,
+            25.8433898
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1194322078,
+        "highway": "tertiary",
+        "name": "Avenida Gregorio Garza Flores",
+        "oneway": "no",
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": "Calle Teotihuacán",
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4518459,
+            25.843284
+          ],
+          [
+            -97.4518145,
+            25.8433586
+          ],
+          [
+            -97.4517406,
+            25.8434862
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1290350365,
+        "highway": "footway",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.454229,
+            25.8443945
+          ],
+          [
+            -97.4542075,
+            25.8444017
+          ],
+          [
+            -97.4536027,
+            25.8443764
+          ],
+          [
+            -97.4535048,
+            25.8443305
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 889214010,
+        "highway": "primary_link",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4532818,
+            25.8446216
+          ],
+          [
+            -97.4533855,
+            25.8445132
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77808656,
+        "highway": "residential",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4517406,
+            25.8434862
+          ],
+          [
+            -97.4517317,
+            25.8435629
+          ],
+          [
+            -97.4513713,
+            25.8451847
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1194322073,
+        "highway": "residential",
+        "name": "Prolongación Sergio López Ochoa",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4527617,
+            25.8454129
+          ],
+          [
+            -97.4522586,
+            25.8453197
+          ],
+          [
+            -97.4517483,
+            25.845242
+          ],
+          [
+            -97.4513713,
+            25.8451847
+          ],
+          [
+            -97.4491938,
+            25.8447824
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1194322074,
+        "highway": "primary",
+        "name": "Avenida Lauro Villar",
+        "oneway": "yes",
+        "service": null,
+        "ref": "MEX 2",
+        "surface": "asphalt",
+        "alt_name": "Carretera a la Playa",
+        "lanes": "2"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4642442,
+            25.852502
+          ],
+          [
+            -97.464125,
+            25.8524123
+          ],
+          [
+            -97.4634786,
+            25.8519323
+          ],
+          [
+            -97.4631954,
+            25.8517226
+          ],
+          [
+            -97.4623761,
+            25.8511205
+          ],
+          [
+            -97.4613353,
+            25.8503514
+          ],
+          [
+            -97.460141,
+            25.849478
+          ],
+          [
+            -97.4598379,
+            25.8492512
+          ],
+          [
+            -97.4583713,
+            25.8481731
+          ],
+          [
+            -97.4574293,
+            25.8474851
+          ],
+          [
+            -97.4570534,
+            25.8472093
+          ],
+          [
+            -97.4569827,
+            25.8471575
+          ],
+          [
+            -97.4566954,
+            25.8469457
+          ],
+          [
+            -97.455117,
+            25.8457857
+          ],
+          [
+            -97.4543833,
+            25.8452465
+          ],
+          [
+            -97.4533855,
+            25.8445132
+          ],
+          [
+            -97.452883,
+            25.8441439
+          ],
+          [
+            -97.4518145,
+            25.8433586
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 1194322075,
+        "highway": "primary",
+        "name": "Avenida Lauro Villar",
+        "oneway": "yes",
+        "service": null,
+        "ref": "MEX 2",
+        "surface": "asphalt",
+        "alt_name": "Carretera a la Playa",
+        "lanes": "2"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4517406,
+            25.8434862
+          ],
+          [
+            -97.4532818,
+            25.8446216
+          ],
+          [
+            -97.4546393,
+            25.8456217
+          ],
+          [
+            -97.4548582,
+            25.8457927
+          ],
+          [
+            -97.4550201,
+            25.8459022
+          ],
+          [
+            -97.456875,
+            25.8472735
+          ],
+          [
+            -97.4569458,
+            25.847326
+          ],
+          [
+            -97.4592029,
+            25.8489988
+          ],
+          [
+            -97.4597364,
+            25.8493765
+          ],
+          [
+            -97.4600309,
+            25.8495935
+          ],
+          [
+            -97.4622656,
+            25.8512396
+          ],
+          [
+            -97.4623882,
+            25.8513355
+          ],
+          [
+            -97.463387,
+            25.852067
+          ],
+          [
+            -97.4641303,
+            25.8526132
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77808704,
+        "highway": "residential",
+        "name": "Calle Azteca",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4576337,
+            25.8461017
+          ],
+          [
+            -97.4562572,
+            25.8457115
+          ],
+          [
+            -97.4556569,
+            25.8455413
+          ],
+          [
+            -97.4552134,
+            25.8454156
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 77808641,
+        "highway": "service",
+        "name": "Prolongación Sergio López Ochoa",
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": "unpaved",
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4546393,
+            25.8456217
+          ],
+          [
+            -97.4545307,
+            25.8456028
+          ],
+          [
+            -97.4542644,
+            25.8456019
+          ],
+          [
+            -97.4538264,
+            25.8455417
+          ],
+          [
+            -97.4537892,
+            25.8455366
+          ],
+          [
+            -97.4532767,
+            25.8454662
+          ],
+          [
+            -97.4527617,
+            25.8454129
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 761049993,
+        "highway": "residential",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4536854,
+            25.8470722
+          ],
+          [
+            -97.453751,
+            25.8463116
+          ],
+          [
+            -97.4537892,
+            25.8455366
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 761049992,
+        "highway": "residential",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4531407,
+            25.8470201
+          ],
+          [
+            -97.4531981,
+            25.8462352
+          ],
+          [
+            -97.4532767,
+            25.8454662
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 761049991,
+        "highway": "residential",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.452141,
+            25.8465851
+          ],
+          [
+            -97.4521541,
+            25.8464133
+          ],
+          [
+            -97.4521588,
+            25.8460973
+          ],
+          [
+            -97.4521878,
+            25.8456763
+          ],
+          [
+            -97.4522586,
+            25.8453197
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 761049997,
+        "highway": "residential",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4518594,
+            25.8460794
+          ],
+          [
+            -97.4517975,
+            25.8456904
+          ],
+          [
+            -97.4517483,
+            25.845242
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 761049990,
+        "highway": "residential",
+        "name": null,
+        "oneway": null,
+        "service": null,
+        "ref": null,
+        "surface": null,
+        "alt_name": null,
+        "lanes": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4526751,
+            25.846943
+          ],
+          [
+            -97.4526277,
+            25.8467806
+          ],
+          [
+            -97.4526352,
+            25.8465966
+          ],
+          [
+            -97.4526597,
+            25.8461642
+          ],
+          [
+            -97.4527617,
+            25.8454129
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 27248049,
+        "highway": "primary",
+        "name": "Avenida Lauro Villar",
+        "oneway": "yes",
+        "service": null,
+        "ref": "MEX 2",
+        "surface": "asphalt",
+        "alt_name": "Carretera a la Playa",
+        "lanes": "2"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4429843,
+            25.8380971
+          ],
+          [
+            -97.4432574,
+            25.8381555
+          ],
+          [
+            -97.4435363,
+            25.8382363
+          ],
+          [
+            -97.4437845,
+            25.838316
+          ],
+          [
+            -97.4443171,
+            25.8385005
+          ],
+          [
+            -97.4444926,
+            25.8385659
+          ],
+          [
+            -97.4447461,
+            25.8386781
+          ],
+          [
+            -97.4450129,
+            25.8387922
+          ],
+          [
+            -97.4453241,
+            25.8389412
+          ],
+          [
+            -97.4457076,
+            25.839138
+          ],
+          [
+            -97.4460929,
+            25.8393634
+          ],
+          [
+            -97.4463272,
+            25.8395025
+          ],
+          [
+            -97.4468006,
+            25.8398079
+          ],
+          [
+            -97.4474189,
+            25.8402591
+          ],
+          [
+            -97.4478872,
+            25.8406345
+          ],
+          [
+            -97.4484428,
+            25.841078
+          ],
+          [
+            -97.4487754,
+            25.841319
+          ],
+          [
+            -97.4495277,
+            25.8418503
+          ],
+          [
+            -97.4499697,
+            25.8421862
+          ],
+          [
+            -97.4510218,
+            25.8429585
+          ],
+          [
+            -97.4517406,
+            25.8434862
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "osm_id": 89487845,
+        "highway": "primary",
+        "name": "Avenida Lauro Villar",
+        "oneway": "yes",
+        "service": null,
+        "ref": "MEX 2",
+        "surface": "asphalt",
+        "alt_name": "Carretera a la Playa",
+        "lanes": "2"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.4518145,
+            25.8433586
+          ],
+          [
+            -97.4513383,
+            25.8430201
+          ],
+          [
+            -97.4511149,
+            25.8428613
+          ],
+          [
+            -97.4500412,
+            25.8420732
+          ],
+          [
+            -97.4499979,
+            25.8420346
+          ],
+          [
+            -97.4496401,
+            25.8417658
+          ],
+          [
+            -97.448918,
+            25.8412255
+          ],
+          [
+            -97.4486347,
+            25.8410192
+          ],
+          [
+            -97.4480141,
+            25.8405572
+          ],
+          [
+            -97.4475102,
+            25.840167
+          ],
+          [
+            -97.4466266,
+            25.8395486
+          ],
+          [
+            -97.4463755,
+            25.8393903
+          ],
+          [
+            -97.4461971,
+            25.8392852
+          ],
+          [
+            -97.4457961,
+            25.8390571
+          ],
+          [
+            -97.445509,
+            25.8389094
+          ],
+          [
+            -97.4450247,
+            25.8386813
+          ],
+          [
+            -97.4449002,
+            25.8386289
+          ],
+          [
+            -97.4446549,
+            25.8385212
+          ],
+          [
+            -97.4444254,
+            25.8384318
+          ],
+          [
+            -97.4438234,
+            25.8382327
+          ],
+          [
+            -97.4435873,
+            25.8381519
+          ],
+          [
+            -97.4433205,
+            25.8380762
+          ],
+          [
+            -97.4429087,
+            25.8379684
+          ],
+          [
+            -97.4427399,
+            25.8379296
+          ],
+          [
+            -97.4426512,
+            25.8379092
+          ],
+          [
+            -97.4425093,
+            25.8378794
+          ]
+        ]
+      }
+    }
+  ]
+}
