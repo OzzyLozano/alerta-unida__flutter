@@ -1,7 +1,8 @@
 import 'package:app_test/screens/alerts.dart';
 import 'package:app_test/screens/brigade_reports.dart';
-import 'package:app_test/screens/home.dart';
+import 'package:app_test/screens/manage_alerts.dart';
 import 'package:app_test/screens/map.dart';
+import 'package:app_test/screens/user_home.dart';
 import 'package:app_test/screens/user_reports.dart';
 import 'package:app_test/splashscreen/user_screen.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage> {
   static const List<Widget> appTitle = <Widget>[
     Text('Alertas', style: TextStyle(fontSize: 32,),),
     Text('Mapa', style: TextStyle(fontSize: 32,),),
-    Text('Inicio', style: TextStyle(fontSize: 32,),),
+    Text('Bienvenido/a', style: TextStyle(fontSize: 32,),),
     Text('Perfil', style: TextStyle(fontSize: 32,),),
     Text('Reportes', style: TextStyle(fontSize: 32,),),
   ];
@@ -74,6 +75,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff3f3f3),
       appBar: AppBar(
         leading: null,
         automaticallyImplyLeading: false,
@@ -89,11 +91,15 @@ class _HomePageState extends State<HomePage> {
         height: 80,
         ),
       body: <Widget>[
-        const Alerts(),
+        (preferences.getBool('isBrigadeMember') ?? false) ? 
+        const ManageAlerts() : const Alerts(),
         const OSMMap(),
-        const Home(),
+        const UserHome(),
+        (preferences.getBool('isBrigadeMember') ?? false) ? 
+        const UserSC(usercorreo: 'brigadecorreo', usernombre: 'brigadenombre', usertelefono: 'brigadetelefono', usercarrera: 'brigadecarrera', usercontrol: 'brigadecontrol') : 
         const UserSC(usercorreo: 'usercorreo', usernombre: 'usernombre', usertelefono: 'usertelefono', usercarrera: 'usercarrera', usercontrol: 'usercontrol'),
-        (preferences.getBool('isBrigadeMember') ?? false) ? const BrigadeReports() : const UserReports()
+        (preferences.getBool('isBrigadeMember') ?? false) ? 
+        const BrigadeReports() : const UserReports()
       ][_selectedIndex],
     );
   }

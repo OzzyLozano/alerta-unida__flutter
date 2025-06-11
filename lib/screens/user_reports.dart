@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class UserReports extends StatefulWidget {
   const UserReports({super.key});
@@ -9,6 +13,24 @@ class UserReports extends StatefulWidget {
 
 class _UserReportsState extends State<UserReports> {
   bool isLoading = true;
+  
+  List<CameraDescription>? cameras;
+  CameraDescription? firstCamera;
+
+  @override
+  void initState() {
+    super.initState();
+    _initCameras();
+  }
+
+  Future<void> _initCameras() async {
+    cameras = await availableCameras();
+    firstCamera = cameras!.first;
+    setState(() {
+      isLoading = false;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +52,11 @@ class _UserReportsState extends State<UserReports> {
             child: Center(
               child: ElevatedButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Proximamente...')),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TakePictureScreen(camera: cameras!.first),
+                    ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -44,7 +69,7 @@ class _UserReportsState extends State<UserReports> {
                 child: const Padding(
                   padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
                   child: Text(
-                    'Tomar foto c:',
+                    'Reportar emergencia',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.white,
@@ -57,5 +82,229 @@ class _UserReportsState extends State<UserReports> {
         ]
       )
     );
+  }
+}
+
+class TakePictureScreen extends StatefulWidget {
+  const TakePictureScreen({super.key, required this.camera});
+
+  final CameraDescription camera;
+
+  @override
+  TakePictureScreenState createState() => TakePictureScreenState();
+}
+class TakePictureScreenState extends State<TakePictureScreen> {
+  late CameraController _controller;
+  late Future<void> _initializeControllerFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = CameraController(
+      widget.camera,
+      ResolutionPreset.medium,
+    );
+
+    _initializeControllerFuture = _controller.initialize();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Reportar emergencia')),
+      body: FutureBuilder<void>(
+        future: _initializeControllerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return CameraPreview(_controller);
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
+      floatingActionButton: ElevatedButton(
+        onPressed: () async {
+          try {
+            await _initializeControllerFuture;
+
+            final image = await _controller.takePicture();
+
+            if (!context.mounted) return;
+
+            await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => DisplayPictureScreen(
+                  imagePath: image.path,
+                ),
+              ),
+            );
+          } catch (e) {
+            print(e);
+          }
+        },
+        style: ElevatedButton.styleFrom(
+          fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
+          backgroundColor: const Color.fromRGBO(120, 186, 60, 1),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
+        child: const Icon(Icons.camera_alt),
+      ),
+    );
+  }
+}
+
+class DisplayPictureScreen extends StatelessWidget {
+  final String imagePath;
+
+  const DisplayPictureScreen({super.key, required this.imagePath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Confirmación de imágen')),
+      body: Column(
+        children: [
+          Image.file(File(imagePath)),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DisplayForm(image_path: imagePath,)
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
+                  backgroundColor: const Color.fromRGBO(120, 186, 60, 1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
+                  child: Text(
+                    'Continuar',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DisplayForm extends StatelessWidget {
+  final image_path;
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+
+  DisplayForm({super.key, this.image_path});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Enviar reporte')),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: _titleController,
+                      decoration: const InputDecoration(
+                        labelText: 'Título',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _descriptionController,
+                      decoration: const InputDecoration(
+                        labelText: 'Descripción',
+                        border: OutlineInputBorder(),
+                      ),
+                      maxLines: 3,
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Enviando reporte...')),
+                          );
+                          await sendReport(
+                            image_path,
+                            _titleController.text,
+                            _descriptionController.text,
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
+                        backgroundColor: const Color.fromRGBO(120, 186, 60, 1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
+                        child: Text(
+                          'Enviar',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Future<void> sendReport(String title, String description, String imagePath) async {
+  try {
+    final uri = Uri.parse('http://example.test:8000/api/reports/send-report');
+
+    var request = http.MultipartRequest('POST', uri);
+    request.fields['title'] = title;
+    request.fields['description'] = description;
+    request.fields['user_id'] = '1';
+
+    var response = await request.send();
+
+    if (response.statusCode == 200) {
+      print('Reporte enviado correctamente');
+    } else {
+      print('Error al enviar reporte: ${response.statusCode}');
+    }
+  } catch (e) {
+    print('Error: $e');
   }
 }

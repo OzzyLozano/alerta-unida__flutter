@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 const String url = 'http://40.233.17.187/api/alerts/active';
 
-Future<List<Alert>> fetchAlerts(http.Client client) async {
+Future<List<Alert>> fetchReports(http.Client client) async {
   try {
     final response = await client.get(Uri.parse(url));
 

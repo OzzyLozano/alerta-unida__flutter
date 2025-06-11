@@ -17,7 +17,7 @@ class _AlertsState extends State<Alerts> {
   @override
   void initState() {
     super.initState();
-    futureAlerts = fetchAlerts(http.Client());
+    futureAlerts = fetchReports(http.Client());
   }
 
   @override

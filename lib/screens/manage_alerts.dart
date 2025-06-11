@@ -1,46 +1,25 @@
 import 'dart:convert';
 
-import 'package:app_test/components/report.dart';
-import 'package:flutter/foundation.dart';
+import 'package:app_test/components/alert.dart';
+import 'package:app_test/components/fetch_alerts.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-const String url = 'http://example.test:8000/api/reports/on-wait';
-
-Future<List<Report>> fetchReports(http.Client client) async {
-  try {
-    final response = await client.get(Uri.parse(url));
-
-    if (response.statusCode == 200) {
-      return compute(parseReports, response.body);
-    } else {
-      throw Exception('Failed to load reports');
-    }
-  } catch (e) {
-    throw Exception('Failed to load reports: $e');
-  }
-}
-
-List<Report> parseReports(String responseBody) {
-  final decoded = jsonDecode(responseBody) as List<dynamic>;
-  return decoded.map<Report>((json) => Report.fromJson(json)).toList();
-}
-
-class BrigadeReports extends StatefulWidget {
-  const BrigadeReports({super.key});
+class ManageAlerts extends StatefulWidget {
+  const ManageAlerts({super.key});
 
   @override
-  _BrigadeReportsState createState() => _BrigadeReportsState();
+  _ManageAlertsState createState() => _ManageAlertsState();
 }
 
-class _BrigadeReportsState extends State<BrigadeReports> {
-  late Future<List<Report>> futureReports;
+class _ManageAlertsState extends State<ManageAlerts> {
+  late Future<List<Alert>> futureAlerts;
   bool isLoading = true;
 
-  void _refreshReports() {
+  void _refreshAlerts() {
     setState(() => isLoading = true);
     setState(() {
-      futureReports = fetchReports(http.Client());
+      futureAlerts = fetchReports(http.Client());
       isLoading = false;
     });
   }
@@ -48,14 +27,14 @@ class _BrigadeReportsState extends State<BrigadeReports> {
   @override
   void initState() {
     super.initState();
-    futureReports = fetchReports(http.Client());
+    futureAlerts = fetchReports(http.Client());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: futureReports, 
+        future: futureAlerts, 
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
@@ -67,7 +46,7 @@ class _BrigadeReportsState extends State<BrigadeReports> {
           } else if (snapshot.hasData) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: ReportsList(reports: snapshot.data!, refreshReports: _refreshReports,)
+              child: AlertsList(alerts: snapshot.data!, refreshAlerts: _refreshAlerts,)
             );
           } else {
             return const Center(
@@ -80,11 +59,11 @@ class _BrigadeReportsState extends State<BrigadeReports> {
   }
 }
 
-class ReportsList extends StatelessWidget {
-  const ReportsList({super.key, required this.reports, required this.refreshReports});
+class AlertsList extends StatelessWidget {
+  const AlertsList({super.key, required this.alerts, required this.refreshAlerts});
 
-  final VoidCallback refreshReports;
-  final List<Report> reports;
+  final VoidCallback refreshAlerts;
+  final List<Alert> alerts;
 
   @override
   Widget build(BuildContext context) {
@@ -92,33 +71,21 @@ class ReportsList extends StatelessWidget {
       scrollDirection: Axis.vertical,
       addAutomaticKeepAlives: false,
       controller: ScrollController(),
-      itemCount: reports.length,
+      itemCount: alerts.length,
       itemBuilder: (context, index) {
         return Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Image.network(
-                'http://example.test:8000/storage/${reports[index].img}',
-                width: MediaQuery.of(context).size.width - 20,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Text(reports[index].title, style: const TextStyle(fontSize: 24),),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 16),
-              child: Text(reports[index].description),
+            ListTile(
+              title: Text(alerts[index].title, style: const TextStyle(fontSize: 24),),
+              subtitle: Text('Tipo: ${alerts[index].type}\n${alerts[index].content}\n\nEstado: ${alerts[index].status}'),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    await authorizeReport(reports[index].id);
-                    refreshReports();
+                    await resolveAlert(alerts[index].id);
+                    refreshAlerts();
                   },
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size((MediaQuery.of(context).size.width - 30)/2, 30),
@@ -134,8 +101,8 @@ class ReportsList extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    await cancelReport(reports[index].id);
-                    refreshReports();
+                    await cancelAlert(alerts[index].id);
+                    refreshAlerts();
                   },
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size((MediaQuery.of(context).size.width - 30)/2, 30),
@@ -158,30 +125,34 @@ class ReportsList extends StatelessWidget {
   }
 }
 
-Future<void> authorizeReport(int reportId) async {
+Future<void> cancelAlert(int id) async {
   try {
+    String url = 'http://40.233.17.187/api/alerts/$id';
     final response = await http.put(
-      Uri.parse('http://example.test:8000/api/reports/$reportId/authorize'),
+      Uri.parse(url),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
+      body: jsonEncode(<String, String>{'status': 'cancelled'}),
     );
-
-    print('Response Status: ${response.statusCode}');
+    debugPrint('Cancel alert response: ${response.statusCode}: ${response.body}');
   } catch (e) {
-    print('Error: $e');
+    throw Exception('Failed to cancel alert: ${e.toString()}');
   }
 }
 
-Future<void> cancelReport(int reportId) async {
+Future<void> resolveAlert(int id) async {
   try {
-    await http.put(
-      Uri.parse('http://example.test:8000/api/reports/$reportId/cancel'),
+    String url = 'http://40.233.17.187/api/alerts/$id';
+    final response = await http.put(
+      Uri.parse(url),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
+      body: jsonEncode(<String, String>{'status': 'resolved'}),
     );
+    debugPrint('Resolve alert response: ${response.statusCode}: ${response.body}');
   } catch (e) {
-    print('Error: $e');
+  throw Exception('Failed to resolve alert: ${e.toString()}');
   }
 }

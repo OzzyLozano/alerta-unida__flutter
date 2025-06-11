@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:app_test/components/user.dart';
 import 'package:app_test/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -19,8 +17,6 @@ class _BrigadeLoginState extends State<BrigadeLogin> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  late Future<User> futureUser;
-  late bool userLoggedIn;
   String message = '';
 
   Future<void> login() async {
@@ -57,10 +53,6 @@ class _BrigadeLoginState extends State<BrigadeLogin> {
         headers: {'Content-Type': 'application/json'},
         body: body,
       );
-
-      if (kDebugMode) {
-        print('RESPUESTA: ${response.body}');
-      }
 
       if (response.statusCode == 200) {
         preferences.setBool('isLogin', true);

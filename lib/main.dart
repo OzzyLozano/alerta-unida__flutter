@@ -13,7 +13,8 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
   runApp(const MainApp());
 }
