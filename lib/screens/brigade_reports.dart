@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-const String url = 'http://example.test:8000/api/reports/on-wait';
+const String url = 'http://40.233.17.187/api/reports/on-wait';
 
 Future<List<Report>> fetchReports(http.Client client) async {
   try {
@@ -99,7 +99,7 @@ class ReportsList extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: Image.network(
-                'http://example.test:8000/storage/${reports[index].img}',
+                'http://40.233.17.187/storage/${reports[index].img}',
                 width: MediaQuery.of(context).size.width - 20,
                 fit: BoxFit.cover,
               ),
@@ -161,7 +161,7 @@ class ReportsList extends StatelessWidget {
 Future<void> authorizeReport(int reportId) async {
   try {
     final response = await http.put(
-      Uri.parse('http://example.test:8000/api/reports/$reportId/authorize'),
+      Uri.parse('http://40.233.17.187/api/reports/$reportId/authorize'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -176,7 +176,7 @@ Future<void> authorizeReport(int reportId) async {
 Future<void> cancelReport(int reportId) async {
   try {
     await http.put(
-      Uri.parse('http://example.test:8000/api/reports/$reportId/cancel'),
+      Uri.parse('http://40.233.17.187/api/reports/$reportId/cancel'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },

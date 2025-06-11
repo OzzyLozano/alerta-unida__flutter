@@ -16,23 +16,37 @@ class _UserHomeState extends State<UserHome> {
   );
   static final List<Widget> _emergencyOptions = <Widget>[
     Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Colors.red,
       ),
-      child: const Icon(
-        Icons.emergency,
-        color: Colors.white,
+      child: const Center(
+        child: FittedBox(
+          child: Text(
+            'Incendios',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
     ),
     Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Colors.indigo,
       ),
-      child: const Icon(
-        Icons.emergency,
-        color: Colors.white,
+      child: const Center(
+        child: FittedBox(
+          child: Text(
+            'Rescate',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
     ),
     Container(
@@ -40,9 +54,16 @@ class _UserHomeState extends State<UserHome> {
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         color: Colors.orange.shade900,
       ),
-      child: const Icon(
-        Icons.emergency,
-        color: Colors.white,
+      child: const Center(
+        child: FittedBox(
+          child: Text(
+            'Evacuación',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
     ),
     Container(
@@ -50,19 +71,33 @@ class _UserHomeState extends State<UserHome> {
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         color: Colors.green.shade600,
       ),
-      child: const Icon(
-        Icons.emergency,
-        color: Colors.white,
+      child: const Center(
+        child: FittedBox(
+          child: Text(
+            'Comunicación',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
     ),
     Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Colors.white,
       ),
-      child: const Icon(
-        Icons.emergency,
-        color: Colors.black,
+      child: const Center(
+        child: FittedBox(
+          child: Text(
+            'Primeros Auxilios',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.black,
+            ),
+          ),
+        ),
       ),
     ),
   ];

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:app_test/homepage.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -253,6 +254,7 @@ class DisplayForm extends StatelessWidget {
                             const SnackBar(content: Text('Enviando reporte...')),
                           );
                           await sendReport(
+                            context,
                             image_path,
                             _titleController.text,
                             _descriptionController.text,
@@ -287,22 +289,28 @@ class DisplayForm extends StatelessWidget {
     );
   }
 }
-
-Future<void> sendReport(String title, String description, String imagePath) async {
+Future<void> sendReport(BuildContext context, String imagePath, String title, String description) async {
   try {
-    final uri = Uri.parse('http://example.test:8000/api/reports/send-report');
-
+    final uri = Uri.parse('http://40.233.17.187/api/reports/send-report');
+    
     var request = http.MultipartRequest('POST', uri);
+    
+    var file = await http.MultipartFile.fromPath('img', imagePath);
+    request.files.add(file);
+    
     request.fields['title'] = title;
     request.fields['description'] = description;
     request.fields['user_id'] = '1';
 
     var response = await request.send();
-
+    
     if (response.statusCode == 200) {
-      print('Reporte enviado correctamente');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Reporte enviado exitosamente!')),
+      );
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
     } else {
-      print('Error al enviar reporte: ${response.statusCode}');
+      print('Respuesta: ${response.statusCode}');
     }
   } catch (e) {
     print('Error: $e');
