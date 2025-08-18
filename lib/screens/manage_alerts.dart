@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:app_test/components/alert.dart';
 import 'package:app_test/components/fetch_alerts.dart';
+import 'package:app_test/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -127,7 +128,7 @@ class AlertsList extends StatelessWidget {
 
 Future<void> cancelAlert(int id) async {
   try {
-    String url = 'http://40.233.17.187/api/alerts/$id';
+    String url = '${AppConfig.apiUrl}/api/alerts/$id';
     final response = await http.put(
       Uri.parse(url),
       headers: {
@@ -143,7 +144,7 @@ Future<void> cancelAlert(int id) async {
 
 Future<void> resolveAlert(int id) async {
   try {
-    String url = 'http://40.233.17.187/api/alerts/$id';
+    String url = '${AppConfig.apiUrl}/api/alerts/$id';
     final response = await http.put(
       Uri.parse(url),
       headers: {
