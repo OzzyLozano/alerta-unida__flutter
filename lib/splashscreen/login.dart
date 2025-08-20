@@ -7,7 +7,7 @@ import 'package:app_test/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-const String apiUrl = 'https://40.233.17.187/flutter/login';
+const String apiUrl = 'http://10.0.2.2:8000/flutter/login';
 
 class Login extends StatefulWidget {
   const Login ({super.key});
@@ -64,8 +64,14 @@ class _LoginState extends State<Login> {
       }
 
       if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+
+        final user = User.fromJson(data);
+
         preferences.setBool('isLogin', true);
         preferences.setBool('isBrigadeMember', false);
+
         setState(() {
           message = 'Sesión iniciada!';
         });

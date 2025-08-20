@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-const String apiUrl = 'https://40.233.17.187/api/users';
+const String apiUrl = 'http://10.0.2.2:8000/api/users';
 String message = '';
 
 Future<void> registerUser(String name, String lastname, String email, String password, String userType, BuildContext context) async {

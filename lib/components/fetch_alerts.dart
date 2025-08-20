@@ -4,7 +4,7 @@ import 'package:app_test/components/alert.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-const String url = 'http://40.233.17.187/api/alerts/active';
+const String url = 'http://10.0.2.2:8000/api/alerts/active';
 
 Future<List<Alert>> fetchReports(http.Client client) async {
   try {

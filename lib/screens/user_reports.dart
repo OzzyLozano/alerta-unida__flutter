@@ -291,7 +291,7 @@ class DisplayForm extends StatelessWidget {
 }
 Future<void> sendReport(BuildContext context, String imagePath, String title, String description) async {
   try {
-    final uri = Uri.parse('http://40.233.17.187/api/reports/send-report');
+    final uri = Uri.parse('http://10.0.2.2:8000/api/reports/send-report');
     
     var request = http.MultipartRequest('POST', uri);
     
