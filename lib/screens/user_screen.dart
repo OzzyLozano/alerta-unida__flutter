@@ -1,8 +1,8 @@
 import 'package:app_test/splashscreen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import './login_screen.dart';
-import './nivel_expansion.dart';
+import '../splashscreen/login_screen.dart';
+import '../components/nivel_expansion.dart';
 
 class UserSC extends StatefulWidget {
   final String usercorreo;

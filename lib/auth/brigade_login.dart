@@ -1,26 +1,24 @@
 import 'dart:convert';
 import 'package:app_test/config.dart';
-import 'package:app_test/splashscreen/brigade_login.dart';
+import 'package:app_test/services/fcm.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:app_test/components/user.dart';
 import 'package:app_test/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-const String apiUrl = '${AppConfig.apiUrl}/flutter/login';
+const String apiUrl = '${AppConfig.apiUrl}/flutter/brigade-login';
 
-class Login extends StatefulWidget {
-  const Login ({super.key});
+class BrigadeLogin extends StatefulWidget {
+  const BrigadeLogin ({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<BrigadeLogin> createState() => _BrigadeLoginState();
 }
 
-class _LoginState extends State<Login> {
+class _BrigadeLoginState extends State<BrigadeLogin> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  late Future<User> futureUser;
   String message = '';
 
   Future<void> login() async {
@@ -61,17 +59,23 @@ class _LoginState extends State<Login> {
       final data = jsonDecode(response.body);
 
       if (response.statusCode == 200 && data['status'] == 'success') {
-        int userId = data['user']['id'];
+        int brigadeId = data['brigade_user']['id'];
+
         await preferences.setBool('isLogin', true);
-        await preferences.setInt('userId', userId);
+        await preferences.setInt('userId', brigadeId);
+        await preferences.setBool('isBrigadeMember', true);
+
+        await FCM.refreshTokenRelationship();
+        await FCM.getAndSendToken();
+
         setState(() {
-          message = 'Sesión iniciada!';
+          message = 'Sesión de brigadista iniciada!';
         });
+
         return true;
       } else {
         final errorMsg = jsonDecode(response.body)['message'];
         preferences.setBool('isLogin', false);
-        preferences.setInt('userId', 0);
         preferences.setBool('isBrigadeMember', false);
         setState(() {
           message = errorMsg;
@@ -80,7 +84,7 @@ class _LoginState extends State<Login> {
       }
     } catch (e) {
       preferences.setBool('isLogin', false);
-      preferences.setBool('isBrigadeMember', false);
+        preferences.setBool('isBrigadeMember', false);
       setState(() {
         message = 'Error de conexión o inesperado.';
       });
@@ -150,34 +154,7 @@ class _LoginState extends State<Login> {
                     child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
                       child: Text(
-                        'Iniciar Sesión',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0),
-                child: Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const BrigadeLogin()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
-                      backgroundColor: const Color.fromRGBO(232, 107, 23, 1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
-                      child: Text(
-                        'Iniciar Sesión como Brigadista',
+                        'Iniciar Sesión como brigadista',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:app_test/components/report.dart';
 import 'package:app_test/config.dart';
-import 'package:app_test/screens/review_report.dart';
+import 'package:app_test/screens/brigade/review_report.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

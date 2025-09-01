@@ -1,11 +1,11 @@
-import 'package:app_test/screens/alerts.dart';
-import 'package:app_test/screens/brigade_alerts.dart';
-import 'package:app_test/screens/brigade_reports.dart';
-import 'package:app_test/screens/manage_alerts.dart';
+import 'package:app_test/screens/user/alerts.dart';
+import 'package:app_test/screens/brigade/brigade_alerts.dart';
+import 'package:app_test/screens/brigade/brigade_reports.dart';
+import 'package:app_test/screens/brigade/manage_alerts.dart';
 import 'package:app_test/screens/map.dart';
-import 'package:app_test/screens/user_home.dart';
-import 'package:app_test/screens/user_reports.dart';
-import 'package:app_test/splashscreen/user_screen.dart';
+import 'package:app_test/screens/user/user_home.dart';
+import 'package:app_test/screens/user/user_reports.dart';
+import 'package:app_test/screens/user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
