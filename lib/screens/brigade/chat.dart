@@ -43,8 +43,8 @@ class _ChatScreenState extends State<ChatScreen> {
       pusher = PusherChannelsFlutter.getInstance();
       
       await pusher.init(
-        apiKey: '62b33e980022bb9d0708',
-        cluster: 'us3',
+        apiKey: AppConfig.pusherApiKey,
+        cluster: AppConfig.pusherCluster,
         onConnectionStateChange: onConnectionStateChange,
         onError: onError,
         onSubscriptionSucceeded: onSubscriptionSucceeded,
