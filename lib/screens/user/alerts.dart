@@ -1,6 +1,6 @@
 import 'package:app_test/components/alert.dart';
 import 'package:app_test/components/fetch_alerts.dart';
-import 'package:app_test/screens/user/checkin_form.dart';
+import 'package:app_test/screens/brigade/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,6 +13,7 @@ class Alerts extends StatefulWidget {
 
 class _AlertsState extends State<Alerts> {
   late Future<List<Alert>> futureAlerts;
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -24,12 +25,12 @@ class _AlertsState extends State<Alerts> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: futureAlerts,
+        future: futureAlerts, 
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
               child: Text(
-                'An error has occurred: ${snapshot.error}',
+                'An error has occurred: ${snapshot.error}', 
                 style: const TextStyle(fontSize: 20),
               ),
             );
@@ -40,8 +41,8 @@ class _AlertsState extends State<Alerts> {
               child: CircularProgressIndicator(),
             );
           }
-        },
-      ),
+        }
+      )
     );
   }
 }
@@ -54,47 +55,27 @@ class AlertsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      scrollDirection: Axis.vertical,
+      addAutomaticKeepAlives: false,
+      controller: ScrollController(),
       itemCount: alerts.length,
       itemBuilder: (context, index) {
-        final alert = alerts[index];
         return Card(
           margin: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              ListTile(
-                title: Text(
-                  alert.title,
-                  style: const TextStyle(fontSize: 24),
+          child: ListTile(
+            title: Text(alerts[index].title, style: const TextStyle(fontSize: 24),),
+            subtitle: Text('Tipo: ${alerts[index].type}\n${alerts[index].content}'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatScreen(alertId: alerts[index].id),
                 ),
-                subtitle: Text('Tipo: ${alert.type}\n${alert.content}'),
-              ),
-              // 👇 Mostrar botón solo si la alerta está activa (status = "active")
-              if (alert.status.toLowerCase() == "active")
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12.0),
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CheckinForm(
-                            alertId: alert.id, // 👈 aquí pasamos el ID de la alerta
-                          ),
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.health_and_safety),
-                    label: const Text("Realizar Check-in"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white,
-                    ),
-                  ),
-                ),
-            ],
+              );
+            }
           ),
         );
-      },
+      }
     );
   }
 }

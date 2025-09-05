@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:app_test/components/report.dart';
+import 'package:app_test/config.dart';
+import 'package:app_test/screens/brigade/review_report.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-const String url = 'http://10.0.2.2:8000/api/reports/on-wait';
+const String url = '${AppConfig.apiUrl}/api/reports/on-wait';
 
 Future<List<Report>> fetchReports(http.Client client) async {
   try {
@@ -99,7 +101,7 @@ class ReportsList extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: Image.network(
-                'http://10.0.2.2:8000/storage/${reports[index].img}',
+                '${AppConfig.apiUrl}/storage/${reports[index].img}',
                 width: MediaQuery.of(context).size.width - 20,
                 fit: BoxFit.cover,
               ),
@@ -117,71 +119,24 @@ class ReportsList extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    await authorizeReport(reports[index].id);
-                    refreshReports();
+                    final result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ReviewReportScreen(report: reports[index]),
+                      ),
+                    );
+
+                    if (result == true) {
+                      refreshReports();
+                    }
                   },
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size((MediaQuery.of(context).size.width - 30)/2, 30),
-                    backgroundColor: const Color.fromRGBO(120, 186, 60, 1),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const Icon(
-                    Icons.check_rounded,
-                    color: Colors.white,
-                  )
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    await cancelReport(reports[index].id);
-                    refreshReports();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size((MediaQuery.of(context).size.width - 30)/2, 30),
-                    backgroundColor: const Color.fromRGBO(232, 107, 23, 1),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const Icon(
-                    Icons.do_disturb,
-                    color: Colors.white,
-                  )
-                ),
+                  child: const Text('Revisar'),
+                )
               ],
             )
           ]
         );
       }
     );
-  }
-}
-
-Future<void> authorizeReport(int reportId) async {
-  try {
-    final response = await http.put(
-      Uri.parse('http://10.0.2.2:8000/api/reports/$reportId/authorize'),
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
-
-    print('Response Status: ${response.statusCode}');
-  } catch (e) {
-    print('Error: $e');
-  }
-}
-
-Future<void> cancelReport(int reportId) async {
-  try {
-    await http.put(
-      Uri.parse('http://10.0.2.2:8000/api/reports/$reportId/cancel'),
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
-  } catch (e) {
-    print('Error: $e');
   }
 }

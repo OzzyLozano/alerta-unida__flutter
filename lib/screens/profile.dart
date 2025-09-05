@@ -1,3 +1,4 @@
+import 'package:app_test/services/fcm.dart';
 import 'package:app_test/splashscreen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,8 +13,10 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   void logout() async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setBool('isLogin', false);
-    preferences.setBool('isBrigadeMember', false);
+    await preferences.remove('userId');
+    await preferences.remove('isLogin');
+    await preferences.remove('isBrigadeMember');
+    await FCM.removeToken();
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const WelcomeScreen()));
   }
 

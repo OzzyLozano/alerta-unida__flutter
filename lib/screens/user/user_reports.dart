@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:app_test/config.dart';
 import 'package:app_test/homepage.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -291,7 +292,7 @@ class DisplayForm extends StatelessWidget {
 }
 Future<void> sendReport(BuildContext context, String imagePath, String title, String description) async {
   try {
-    final uri = Uri.parse('http://10.0.2.2:8000/api/reports/send-report');
+    final uri = Uri.parse('${AppConfig.apiUrl}/api/reports/send-report');
     
     var request = http.MultipartRequest('POST', uri);
     

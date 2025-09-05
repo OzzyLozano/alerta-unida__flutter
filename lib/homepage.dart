@@ -1,7 +1,8 @@
+import 'package:app_test/screens/user/alerts.dart';
+import 'package:app_test/screens/brigade/brigade_alerts.dart';
 import 'package:app_test/screens/brigade/brigade_reports.dart';
 import 'package:app_test/screens/brigade/manage_alerts.dart';
 import 'package:app_test/screens/map.dart';
-import 'package:app_test/screens/user/alerts.dart';
 import 'package:app_test/screens/user/user_home.dart';
 import 'package:app_test/screens/user/user_reports.dart';
 import 'package:app_test/screens/user_screen.dart';
@@ -94,7 +95,8 @@ class _HomePageState extends State<HomePage> {
         (preferences.getBool('isBrigadeMember') ?? false) ? 
         const ManageAlerts() : const Alerts(),
         const OSMMap(),
-        const UserHome(),
+        (preferences.getBool('isBrigadeMember') ?? false) ? 
+        const BrigadeAlerts() : const UserHome(),
         (preferences.getBool('isBrigadeMember') ?? false) ? 
         const UserSC(usercorreo: 'brigadecorreo', usernombre: 'brigadenombre', usertelefono: 'brigadetelefono', usercarrera: 'brigadecarrera', usercontrol: 'brigadecontrol') : 
         const UserSC(usercorreo: 'usercorreo', usernombre: 'usernombre', usertelefono: 'usertelefono', usercarrera: 'usercarrera', usercontrol: 'usercontrol'),

@@ -1,13 +1,14 @@
 import 'dart:convert';
+import 'package:app_test/config.dart';
 import 'package:app_test/auth/brigade_login.dart';
-import 'package:flutter/foundation.dart';
+import 'package:app_test/services/fcm.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:app_test/components/user.dart';
 import 'package:app_test/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-const String apiUrl = 'http://10.0.2.2:8000/flutter/login';
+const String apiUrl = '${AppConfig.apiUrl}/flutter/login';
 
 class Login extends StatefulWidget {
   const Login ({super.key});
@@ -21,7 +22,6 @@ class _LoginState extends State<Login> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   late Future<User> futureUser;
-  late bool userLoggedIn;
   String message = '';
 
   Future<void> login() async {
@@ -59,26 +59,24 @@ class _LoginState extends State<Login> {
         body: body,
       );
 
-      if (kDebugMode) {
-        print('RESPUESTA: ${response.body}');
-      }
+      final data = jsonDecode(response.body);
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-
-
-        final user = User.fromJson(data);
-
-        preferences.setBool('isLogin', true);
-        preferences.setBool('isBrigadeMember', false);
-
+      if (response.statusCode == 200 && data['status'] == 'success') {
+        int userId = data['user']['id'];
+        await preferences.setBool('isLogin', true);
+        await preferences.setInt('userId', userId);
         setState(() {
           message = 'Sesión iniciada!';
         });
+
+        await FCM.refreshTokenRelationship();
+        await FCM.getAndSendToken();
+
         return true;
       } else {
         final errorMsg = jsonDecode(response.body)['message'];
         preferences.setBool('isLogin', false);
+        preferences.setInt('userId', 0);
         preferences.setBool('isBrigadeMember', false);
         setState(() {
           message = errorMsg;
