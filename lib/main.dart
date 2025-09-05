@@ -13,7 +13,7 @@ class MyHttpOverrides extends HttpOverrides {
     return super.createHttpClient(context)
       ..badCertificateCallback =
           (X509Certificate cert, String host, int port) {
-        return host == '10.0.2.2';
+        return host == '40.233.17.187';
       };
   }
 }

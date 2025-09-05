@@ -259,7 +259,6 @@ class _OSMMapState extends State<OSMMap> {
     }).toList();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return FlutterMap(
