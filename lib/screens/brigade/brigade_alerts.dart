@@ -1,6 +1,6 @@
 import 'package:app_test/components/alert.dart';
 import 'package:app_test/components/fetch_alerts.dart';
-import 'package:app_test/screens/chat.dart';
+import 'package:app_test/screens/brigade/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

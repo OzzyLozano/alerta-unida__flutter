@@ -1,4 +1,4 @@
-import 'package:app_test/splashscreen.dart';
+import 'package:app_test/splashscreen/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
