@@ -1,4 +1,5 @@
 import 'package:app_test/splashscreen/splashscreen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -55,18 +56,22 @@ Future<void> _setupPushNotifications() async {
     );
     
     // Verificar el estado de los permisos
-    if (notificationSettings.authorizationStatus == AuthorizationStatus.authorized) {
-      print('Usuario concedió permiso para notificaciones');
-    } else if (notificationSettings.authorizationStatus == AuthorizationStatus.provisional) {
-      print('Usuario concedió permiso provisional');
-    } else {
-      print('Usuario denegó o no ha aceptado los permisos');
+    if (kDebugMode) {
+      if (notificationSettings.authorizationStatus == AuthorizationStatus.authorized) {
+          print('Usuario concedió permiso para notificaciones');
+      } else if (notificationSettings.authorizationStatus == AuthorizationStatus.provisional) {
+        print('Usuario concedió permiso provisional');
+      } else {
+        print('Usuario denegó o no ha aceptado los permisos');
+      }
     }
 
     // Configurar manejadores para notificaciones en primer plano
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-      print('Mensaje recibido en primer plano!');
-      print('Message data: ${message.data}');
+      if (kDebugMode) {
+        print('Mensaje recibido en primer plano!');
+        print('Message data: ${message.data}');
+      }
       
       await NotificationService.showNotification(
         id: DateTime.now().millisecondsSinceEpoch.remainder(100000),
@@ -75,19 +80,25 @@ Future<void> _setupPushNotifications() async {
         payload: message.data.toString(),
       );
       
-      if (message.notification != null) {
-        print('Message Notification Title: ${message.notification?.title}');
-        print('Message Notification Body: ${message.notification?.body}');
+      if (kDebugMode) {
+        if (message.notification != null) {
+          print('Message Notification Title: ${message.notification?.title}');
+          print('Message Notification Body: ${message.notification?.body}');
+        }
       }
     });
 
     // Manejar cuando la app está en segundo plano pero abierta
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print('App abierta desde notificación en segundo plano');
-      print('Message data: ${message.data}');
+      if (kDebugMode) {
+        print('App abierta desde notificación en segundo plano');
+        print('Message data: ${message.data}');
+      }
     });
 
   } catch (e) {
-    print('Error configuring push notifications: $e');
+    if (kDebugMode) {
+      print('Error configuring push notifications: $e');
+    }
   }
 }
