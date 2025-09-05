@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Centro de Computo",
+    "lat": 25.842860582885045,
+    "lng": -97.45459742628637,
+    "informacion": "Planta Baja: 2 🧯PQS, Planta Alta: 1 🧯PQS"
+  },
+  {
+    "nombre": "Biblioteca",
+    "lat": 25.843056164053205,
+    "lng": -97.45383646615647,
+    "informacion": "2 🧯PQS"
+  },
+  {
+    "nombre": "Cafetería",
+    "lat": 25.84305729237811,
+    "lng": -97.45421132432467,
+    "informacion": "2 🧯PQS"
+  },
+  {
+    "nombre": "Laboratorio de Mecatronica",
+    "lat": 25.84152045936866,
+    "lng": -97.45288077746697,
+    "informacion": "2 🧯PQS"
+  },
+  {
+    "nombre": "Laboratorio de Quimica",
+    "lat": 25.844764793610327,
+    "lng": -97.45448244930219,
+    "informacion": "Lab.Quimica-Analisis: 2 🧯PQS, Lab.Quimica-General: 1 🧯PQS, Lab.Quimica-Salon 1 🧯CO2, Lab.Ing.Quimica-Lab: 4 🧯PQS y 1 🧯CO2"
+  },
+  {
+    "nombre": "Laboratorio de Ingenieria Civil",
+    "lat": 25.84452822878731,
+    "lng": -97.45406799663198,
+    "informacion": "2 🧯PQS"
+  },
+  {
+    "nombre": "Laboratorio de Electromecanica",
+    "lat": 25.844419132546296,
+    "lng": -97.45443954284613,
+    "informacion": "4 🧯PQS"
+  },
+  {
+    "nombre": "Laboratorio de Electronica",
+    "lat": 25.841768258586974,
+    "lng": -97.45346618712347,
+    "informacion": "3 🧯PQS"
+  },
+  {
+    "nombre": "Centro de Idiomas",
+    "lat": 25.844191875869242,
+    "lng": -97.45377061457438,
+    "informacion": "2 🧯PQS"
+  },
+  {
+    "nombre": "Laboratorio de Ingenieria en Gestion Empresarial/ Industrial",
+    "lat": 25.841555895934224,
+    "lng": -97.45318581943528,
+    "informacion": "4 🧯 CO2"
+  }
+]

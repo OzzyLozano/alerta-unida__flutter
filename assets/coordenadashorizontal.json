@@ -1,0 +1,68 @@
+[
+  {
+    "nombre": "Edificio K",
+    "lat": 25.84176791943041,
+    "lng": -97.45393607975393,
+    "informacion": ""
+  },
+  {
+    "nombre": "Edificio H",
+    "lat": 25.84224095814001,
+    "lng": -97.45433744102709,
+    "informacion": ""
+  },
+  {
+    "nombre": "Edificio M",
+    "lat": 25.842171522399443,
+    "lng": -97.45462872541654,
+    "informacion": ""
+  },
+  {
+    "nombre": "Edificio N",
+    "lat": 25.842581050974594,
+    "lng": -97.45447284890544,
+    "informacion": ""
+  },
+  {
+    "nombre": "Edificio J",
+    "lat": 25.842437119674923,
+    "lng": -97.45418923479957,
+    "informacion": ""
+  },
+  {
+    "nombre": "Edificio O",
+    "lat": 25.843425934306925,
+    "lng": -97.45455096498875,
+    "informacion": ""
+  },
+  {
+    "nombre": "Edificio I",
+    "lat": 25.8434503655042,
+    "lng": -97.45423996439835,
+    "informacion": ""
+  },
+  {
+    "nombre": "Edificio Q",
+    "lat": 25.843625404130368,
+    "lng": -97.45425986757499,
+    "informacion": ""
+  },
+  {
+    "nombre": "Edificio T",
+    "lat": 25.843985355484342,
+    "lng": -97.45394371146887,
+    "informacion": ""
+  },
+  {
+    "nombre": "Auditorio Fundadores",
+    "lat": 25.843227277824564,
+    "lng": -97.45470258918263,
+    "informacion": ""
+  },
+  {
+    "nombre": "Sala de Maestros",
+    "lat": 25.842515855840972,
+    "lng": -97.4531153879508,
+    "informacion": "1 🧯PQS"
+  }
+]

@@ -37,3 +37,10 @@ flutter:
     - geojson/power_lines.geojson
     - geojson/roads.geojson
     - assets/alerta_unida_isotipo.png
+    - assets/coordenadasvertical.json
+    - assets/coordenadasPorterias.json
+    - assets/coordenadasgrande.json
+    - assets/coordenadasmediano.json
+    - assets/coordenadashorizontal.json
+    - assets/coordenadaspuntoreunion.json
+

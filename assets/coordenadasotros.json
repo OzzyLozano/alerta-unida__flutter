@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "Cancha de Futbol",
+    "lat": 25.839710844520006,
+    "lng": -97.45459888148335,
+    "informacion": ""
+  },
+  {
+    "nombre": "Cancha de Volleyball",
+    "lat": 25.84147615624979,
+    "lng": -97.45257525279192,
+    "informacion": ""
+  },
+  {
+    "nombre": "Cancha de Basquetbol",
+    "lat": 25.843050315330135,
+    "lng": -97.4533899216905,
+    "informacion": ""
+  }
+]

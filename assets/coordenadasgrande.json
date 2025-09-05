@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Edificio R",
+    "lat": 25.84225609907991,
+    "lng": -97.45306680913832,
+    "informacion": "Planta Baja: 1 🧯PQS, Planta Alta: 1 🧯PQS "
+  },
+  {
+    "nombre": "Edificio Y",
+    "lat": 25.84187238298435,
+    "lng": -97.45286314431178,
+    "informacion": "Planta Baja: 1 🧯PQS, Planta Alta: 1 🧯PQS "
+  },
+  {
+    "nombre": "Edificio Administrativo",
+    "lat": 25.84314950785668,
+    "lng": -97.45301808850773,
+    "informacion": "Escolares: 1🧯PQS, Desarrollo Academico: 1🧯PQS, DIV.EST: 1 🧯PQS, REC.HUM: 1🧯PQS, Planta Alta: 1🧯PQS, Copiadora: 1🧯PQS, Subdireccion: 1🧯PQS, Finacieros: 1🧯PQS"
+  },
+  {
+    "nombre": "Gimnasio",
+    "lat": 25.841945870889667,
+    "lng": -97.45243222291457,
+    "informacion": "Lobby: 2 🧯PQS, Cancha: 2 🧯PQS"
+  }
+]
