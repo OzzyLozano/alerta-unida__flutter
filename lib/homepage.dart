@@ -59,7 +59,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-
   late SharedPreferences preferences;
 
   @override

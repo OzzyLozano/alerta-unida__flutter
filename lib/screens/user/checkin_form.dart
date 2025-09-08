@@ -30,24 +30,20 @@ class _CheckinFormState extends State<CheckinForm> {
     try {
       // Si tu app guardó userName/userEmail en SharedPreferences, los añadimos (opcional)
       final prefs = await SharedPreferences.getInstance();
-      final savedName = prefs.getString('userName');
-      final savedEmail = prefs.getString('userEmail');
+      final userId = prefs.getInt('userId');
+
+      print(widget.alertId);
+      print(userId);
 
       final Map<String, dynamic> payload = {
         'alert_id': widget.alertId,
+        'user_id': userId,
         'meeting_point': _meetingPoint,
         'are_you_okay': _areYouOkay,
       };
 
-      if (savedName != null && savedName.isNotEmpty) {
-        payload['name'] = savedName;
-      }
-      if (savedEmail != null && savedEmail.isNotEmpty) {
-        payload['email'] = savedEmail;
-      }
-
       final response = await http.post(
-        Uri.parse("${AppConfig.apiUrl}/api/check_in/storeApi"),
+        Uri.parse("${AppConfig.apiUrl}/api/alerts/${widget.alertId}/check-in/$userId"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(payload),
       );
