@@ -49,7 +49,17 @@ class _OSMMapState extends State<OSMMap> {
     startTrackingUserLocation();
   }
 
-  void startTrackingUserLocation() {
+  void startTrackingUserLocation() async {
+    LocationPermission permission;
+    
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) return;
+    }
+
+    if (permission == LocationPermission.deniedForever) return;
+    
     Geolocator.getPositionStream(
       locationSettings: const LocationSettings(
         accuracy: LocationAccuracy.best,
