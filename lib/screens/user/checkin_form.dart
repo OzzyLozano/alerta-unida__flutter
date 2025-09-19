@@ -34,6 +34,8 @@ class _CheckinFormState extends State<CheckinForm> {
 
       print(widget.alertId);
       print(userId);
+      print(_meetingPoint);
+      print(_areYouOkay);
 
       final Map<String, dynamic> payload = {
         'alert_id': widget.alertId,
