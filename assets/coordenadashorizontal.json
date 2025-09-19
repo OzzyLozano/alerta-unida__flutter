@@ -3,66 +3,121 @@
     "nombre": "Edificio K",
     "lat": 25.84176791943041,
     "lng": -97.45393607975393,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/salonesk.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Edificio H",
     "lat": 25.84224095814001,
     "lng": -97.45433744102709,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/salones_h.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Edificio M",
     "lat": 25.842171522399443,
     "lng": -97.45462872541654,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/salones_m.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Edificio N",
     "lat": 25.842581050974594,
     "lng": -97.45447284890544,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/salonesn.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Edificio J",
     "lat": 25.842437119674923,
     "lng": -97.45418923479957,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/salones_j.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Edificio O",
     "lat": 25.843425934306925,
     "lng": -97.45455096498875,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/saloneso.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Edificio I",
     "lat": 25.8434503655042,
     "lng": -97.45423996439835,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/salonesi.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Edificio Q",
     "lat": 25.843625404130368,
     "lng": -97.45425986757499,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/salonesq.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Edificio T",
     "lat": 25.843985355484342,
     "lng": -97.45394371146887,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/salonest.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Auditorio Fundadores",
     "lat": 25.843227277824564,
     "lng": -97.45470258918263,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/fundadores.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Sala de Maestros",
     "lat": 25.842515855840972,
     "lng": -97.4531153879508,
-    "informacion": "1 🧯PQS"
+    "imagenPrincipal": "assets/Edificios/salademaestros.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "assets/extintores/extintormaestros.jpg", "descripcion": "1 🧯PQS" }
+      ]
+    }
   }
 ]

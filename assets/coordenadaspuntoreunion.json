@@ -3,25 +3,44 @@
     "nombre": "Punto 1",
     "lat": 25.84232290201548,
     "lng": -97.45213797402631,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/punto1.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/punto1.jpg", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Punto 2",
     "lat": 25.84200312840894,
     "lng": -97.45396805449244,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/punto2.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/punto2.jpg", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Punto 3",
     "lat": 25.842871005233693,
     "lng": -97.45324823878892,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/punto3.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/punto3.jpg", "descripcion": "" }
+      ]
+    }
   },
   {
     "nombre": "Punto 4",
     "lat": 25.84375094365639,
     "lng": -97.45391871190492,
-    "informacion": ""
+    "imagenPrincipal": "assets/Edificios/punto4.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/punto4.jpg", "descripcion": "" }
+      ]
+    }
   }
-
 ]

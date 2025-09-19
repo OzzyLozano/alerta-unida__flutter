@@ -48,6 +48,60 @@ flutter:
     - assets/coordenadasmediano.json
     - assets/coordenadashorizontal.json
     - assets/coordenadaspuntoreunion.json
+    - assets/extintores/img.png
+    - assets/Edificios/edificio_r.jpg
+    - assets/Edificios/gimnasio.jpg
+    - assets/Edificios/salonesy.jpg
+    - assets/Edificios/almacen.jpg
+    - assets/Edificios/templo.jpg
+    - assets/Edificios/vinculacion.jpg
+    - assets/Edificios/sistemas.jpg
+    - assets/Edificios/salonest.jpg
+    - assets/Edificios/salonesq.jpg
+    - assets/Edificios/saloneso.jpg
+    - assets/Edificios/salonesk.jpg
+    - assets/Edificios/salonesi.jpg
+    - assets/Edificios/salones_m.jpg
+    - assets/Edificios/salones_j.jpg
+    - assets/Edificios/salones_h.jpg
+    - assets/Edificios/salademaestros.jpg
+    - assets/Edificios/quimica.jpg
+    - assets/Edificios/nite.jpg
+    - assets/Edificios/mecatronica.jpg
+    - assets/Edificios/laboratorioindustrialige.jpg
+    - assets/Edificios/laboratorio_conta.jpg
+    - assets/Edificios/laboratorio_fisica.jpg
+    - assets/Edificios/laboratorio_quimica_general.jpg
+    - assets/Edificios/laboratorioelectronica.jpg
+    - assets/Edificios/civil.jpg
+    - assets/Edificios/centrodeinformacion.jpg
+    - assets/Edificios/analisis.jpg
+    - assets/Edificios/cafeteria.jpg
+    - assets/Edificios/ambiental.jpg
+    - assets/Edificios/almacen.jpg
+    - assets/Edificios/fundadores.jpg
+    - assets/extintores/plantaaltay.jpg
+    - assets/extintores/plantabajar.jpg
+    - assets/extintores/plantabajay.jpg
+    - assets/extintores/plantaaltar.jpg
+    - assets/extintores/plantaaltasistemas.jpg
+    - assets/extintores/plantabajasistemas.jpg
+    - assets/extintores/plantabajacafeteria.jpg
+    - assets/extintores/extintormaestros.jpg
+    - assets/extintores/ige.jpg
+    - assets/extintores/ige2.jpg
+    - assets/puntosdereunion/punto2.jpg
+    - assets/puntosdereunion/punto3.jpg
+    - assets/puntosdereunion/puntodereunion4canchas.jpg
+    - assets/puntosdereunion/puntoq.jpg
+    - assets/puntosdereunion/puntoreunionmaestros.jpg
+    - assets/puntosdereunion/porteriatecopias.jpg
+    - assets/puntosdereunion/porteriasegunda.jpg
+    - assets/puntosdereunion/porteriaenfrente.jpg
+    - assets/puntosdereunion/porteriamaestros.jpg
+    - assets/puntosdereunion/porteriaestudiantes.jpg
+
+
 
 dependency_overrides:
   geolocator_android: 4.5.0

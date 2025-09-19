@@ -3,60 +3,122 @@
     "nombre": "Centro de Computo",
     "lat": 25.842860582885045,
     "lng": -97.45459742628637,
-    "informacion": "Planta Baja: 2 🧯PQS, Planta Alta: 1 🧯PQS"
+    "imagenPrincipal": "assets/Edificios/sistemas.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "assets/extintores/plantabajasistemas.jpg", "descripcion": "2 🧯PQS" }
+      ],
+      "Planta Alta": [
+        { "imagen": "assets/extintores/plantaaltasistemas.jpg", "descripcion": "1 🧯PQS" }
+      ]
+    }
   },
   {
     "nombre": "Biblioteca",
     "lat": 25.843056164053205,
     "lng": -97.45383646615647,
-    "informacion": "2 🧯PQS"
+    "imagenPrincipal": "assets/Edificios/centrodeinformacion.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
+      ]
+    }
   },
   {
     "nombre": "Cafetería",
     "lat": 25.84305729237811,
     "lng": -97.45421132432467,
-    "informacion": "2 🧯PQS"
+    "imagenPrincipal": "assets/Edificios/cafeteria.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/plantabajacafeteria.jpg", "descripcion": "2 🧯PQS" }
+      ]
+    }
   },
   {
     "nombre": "Laboratorio de Mecatronica",
     "lat": 25.84152045936866,
     "lng": -97.45288077746697,
-    "informacion": "2 🧯PQS"
+    "imagenPrincipal": "assets/Edificios/lab_mecatronica.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/lab_mecatronica.jpg", "descripcion": "2 🧯PQS" }
+      ]
+    }
   },
   {
     "nombre": "Laboratorio de Quimica",
     "lat": 25.844764793610327,
     "lng": -97.45448244930219,
-    "informacion": "Lab.Quimica-Analisis: 2 🧯PQS, Lab.Quimica-General: 1 🧯PQS, Lab.Quimica-Salon 1 🧯CO2, Lab.Ing.Quimica-Lab: 4 🧯PQS y 1 🧯CO2"
+    "imagenPrincipal": "assets/Edificios/lab_quimica.jpg",
+    "plantas": {
+      "Lab. Quimica - Analisis": [
+        { "imagen": "assets/extintores/lab_quimica_analisis.jpg", "descripcion": "2 🧯PQS" }
+      ],
+      "Lab. Quimica - General": [
+        { "imagen": "assets/extintores/lab_quimica_general.jpg", "descripcion": "1 🧯PQS" }
+      ],
+      "Lab. Quimica - Salon": [
+        { "imagen": "assets/extintores/lab_quimica_salon.jpg", "descripcion": "1 🧯CO2" }
+      ],
+      "Lab. Ing. Quimica - Lab": [
+        { "imagen": "assets/extintores/lab_ing_quimica.jpg", "descripcion": "4 🧯PQS y 1 🧯CO2" }
+      ]
+    }
   },
   {
     "nombre": "Laboratorio de Ingenieria Civil",
     "lat": 25.84452822878731,
     "lng": -97.45406799663198,
-    "informacion": "2 🧯PQS"
+    "imagenPrincipal": "assets/Edificios/lab_civil.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/lab_civil.jpg", "descripcion": "2 🧯PQS" }
+      ]
+    }
   },
   {
     "nombre": "Laboratorio de Electromecanica",
     "lat": 25.844419132546296,
     "lng": -97.45443954284613,
-    "informacion": "4 🧯PQS"
+    "imagenPrincipal": "assets/Edificios/lab_electromecanica.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/lab_electromecanica.jpg", "descripcion": "4 🧯PQS" }
+      ]
+    }
   },
   {
     "nombre": "Laboratorio de Electronica",
     "lat": 25.841768258586974,
     "lng": -97.45346618712347,
-    "informacion": "3 🧯PQS"
+    "imagenPrincipal": "assets/Edificios/lab_electronica.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/lab_electronica.jpg", "descripcion": "3 🧯PQS" }
+      ]
+    }
   },
   {
     "nombre": "Centro de Idiomas",
     "lat": 25.844191875869242,
     "lng": -97.45377061457438,
-    "informacion": "2 🧯PQS"
+    "imagenPrincipal": "assets/Edificios/centro_idiomas.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/centro_idiomas.jpg", "descripcion": "2 🧯PQS" }
+      ]
+    }
   },
   {
     "nombre": "Laboratorio de Ingenieria en Gestion Empresarial/ Industrial",
     "lat": 25.841555895934224,
     "lng": -97.45318581943528,
-    "informacion": "4 🧯 CO2"
+    "imagenPrincipal": "assets/Edificios/lab_gestion_industrial.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/lab_gestion_industrial.jpg", "descripcion": "4 🧯CO2" }
+      ]
+    }
   }
 ]
