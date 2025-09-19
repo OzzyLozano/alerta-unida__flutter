@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:app_test/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,7 +47,7 @@ class _CheckinFormState extends State<CheckinForm> {
       }
 
       final response = await http.post(
-        Uri.parse("http://10.0.2.2:8000/api/check_in/storeApi"),
+        Uri.parse("${AppConfig.apiUrl}/api/check_in/storeApi"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(payload),
       );

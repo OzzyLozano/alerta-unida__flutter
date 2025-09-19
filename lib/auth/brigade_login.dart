@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'package:app_test/config.dart';
+import 'package:app_test/services/fcm.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:app_test/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-const String apiUrl = 'http://10.0.2.2:8000/flutter/brigade-login';
+const String apiUrl = '${AppConfig.apiUrl}/flutter/brigade-login';
 
 class BrigadeLogin extends StatefulWidget {
   const BrigadeLogin ({super.key});
@@ -54,13 +56,22 @@ class _BrigadeLoginState extends State<BrigadeLogin> {
         body: body,
       );
 
-      if (response.statusCode == 200) {
-        preferences.setBool('isLogin', true);
-        preferences.setBool('isBrigadeMember', true);
+      final data = jsonDecode(response.body);
+
+      if (response.statusCode == 200 && data['status'] == 'success') {
+        int brigadeId = data['brigade_user']['id'];
+
+        await preferences.setBool('isLogin', true);
+        await preferences.setInt('userId', brigadeId);
+        await preferences.setBool('isBrigadeMember', true);
+
+        await FCM.refreshTokenRelationship();
+        await FCM.getAndSendToken();
 
         setState(() {
-          message = 'Sesión iniciada!';
+          message = 'Sesión de brigadista iniciada!';
         });
+
         return true;
       } else {
         final errorMsg = jsonDecode(response.body)['message'];

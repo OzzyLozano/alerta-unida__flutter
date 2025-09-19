@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:app_test/components/report.dart';
 import 'package:app_test/config.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -45,13 +46,13 @@ class _ReviewReportScreenState extends State<ReviewReportScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Revisión de Reporte")),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network('${AppConfig.apiUrl}/storage/${widget.report.img}'),
-            const SizedBox(height: 8),
+            const SizedBox(height: 24),
 
             TextField(
               controller: _titleController,
@@ -90,8 +91,8 @@ class _ReviewReportScreenState extends State<ReviewReportScreen> {
                 border: OutlineInputBorder(),
               ),
             ),
+            const SizedBox(height: 8),
 
-            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -106,15 +107,13 @@ class _ReviewReportScreenState extends State<ReviewReportScreen> {
                       description: _descriptionController.text,
                       type: _selectedType,
                     );
-                    Navigator.pop(context, true);
                   },
                 ),
                 ElevatedButton.icon(
                   icon: const Icon(Icons.close),
                   label: const Text("Cancelar"),
                   onPressed: () async {
-                    await cancelReport(widget.report.id);
-                    Navigator.pop(context, true);
+                    await cancelReport(context: context, widget.report.id);
                   },
                 ),
               ],
@@ -128,7 +127,17 @@ class _ReviewReportScreenState extends State<ReviewReportScreen> {
 
 Future<void> authorizeReport(int reportId, {required BuildContext context, required String title, required String description, String? type}) async {
   try {
-    if (type == null) {
+    if (title == '') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Por favor agregue un titulo')),
+      );
+      return;
+    } if (description == '') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Por favor agregue una descripción')),
+      );
+      return;
+    } if (type == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Por favor selecciona un tipo de reporte')),
       );
@@ -143,14 +152,29 @@ Future<void> authorizeReport(int reportId, {required BuildContext context, requi
           'type': type,
         }),
       );
-      print('Response Status: ${response.statusCode}');
+      
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('El reporte ha sido enviado como alerta')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Response Status: ${response.statusCode}')),
+        );
+      }
+      Navigator.pop(context, true);
     }
   } catch (e) {
-    print('Error: $e');
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Error: $e')),
+    );
+    if (kDebugMode) {
+      print('Error: $e');
+    }
   }
 }
 
-Future<void> cancelReport(int reportId) async {
+Future<void> cancelReport(int reportId, {required BuildContext context}) async {
   try {
     final response = await http.put(
       Uri.parse('${AppConfig.apiUrl}/api/reports/$reportId/cancel'),
@@ -159,8 +183,19 @@ Future<void> cancelReport(int reportId) async {
       },
     );
     
-    print('Response Status: ${response.statusCode}');
+    if (response.statusCode == 200) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('El reporte ha sido cancelado')),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Response Status: ${response.statusCode}')),
+      );
+    }
+    Navigator.pop(context, true);
   } catch (e) {
-    print('Error: $e');
+    if (kDebugMode) {
+      print('Error: $e');
+    }
   }
 }

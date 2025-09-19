@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "828449012920",
+    "firebase_url": "https://miprueba-55284-default-rtdb.firebaseio.com",
+    "project_id": "miprueba-55284",
+    "storage_bucket": "miprueba-55284.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828449012920:android:4cc2cb0a0a9aaf46eb484d",
+        "android_client_info": {
+          "package_name": "com.example.app_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgsFjYpBDL4u50LnckpvIjcHSyT9duW08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
