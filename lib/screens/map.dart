@@ -25,7 +25,9 @@ class _OSMMapState extends State<OSMMap> {
   final String _mapUrlTemplate = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
   final LatLng _initialCoords = const LatLng(25.842444, -97.453585);
 
-  GeoJsonParser roadsGeoJson = GeoJsonParser(); // Solo roads.geojson
+  final MapController _mapController = MapController();
+
+  GeoJsonParser roadsGeoJson = GeoJsonParser();
 
   List<EdificioGrande> edificiosgrandes = [];
   List<Porterias> porterias = [];
@@ -44,13 +46,21 @@ class _OSMMapState extends State<OSMMap> {
     loadEdificiosVerticales();
     loadPuntosdeReunion();
     loadPorterias();
-    getUserLocation();
+    startTrackingUserLocation();
   }
 
-  Future<void> getUserLocation() async {
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
-    setState(() {
-      userLocation = LatLng(position.latitude, position.longitude);
+  void startTrackingUserLocation() {
+    Geolocator.getPositionStream(
+      locationSettings: const LocationSettings(
+        accuracy: LocationAccuracy.best,
+        distanceFilter: 1,
+      ),
+    ).listen((Position position) {
+      LatLng newPos = LatLng(position.latitude, position.longitude);
+      setState(() {
+        userLocation = newPos;
+      });
+      _mapController.move(newPos, 18);
     });
   }
 
@@ -108,7 +118,7 @@ class _OSMMapState extends State<OSMMap> {
     });
   }
 
-  // Marcadores existentes...
+  // ----------------- Marcadores -----------------
   List<Marker> _buildEdificioGrandeMarkers() {
     return edificiosgrandes.map((e) {
       return Marker(
@@ -117,21 +127,76 @@ class _OSMMapState extends State<OSMMap> {
         height: 60,
         child: GestureDetector(
           onTap: () {
-            showDialog(
+            showModalBottomSheet(
               context: context,
-              builder: (_) => AlertDialog(
-                title: Text(e.nombre),
-                content: Text(e.informacion),
-                actions: [
-                  TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
-                ],
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
+              builder: (_) => _buildEdificioGrandeSheet(e),
             );
           },
           child: Container(width: double.infinity, height: double.infinity, color: Colors.transparent),
         ),
       );
     }).toList();
+  }
+
+  Widget _buildEdificioGrandeSheet(EdificioGrande e) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(child: Text(e.nombre, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
+            const SizedBox(height: 12),
+            if (e.imagenPrincipal.isNotEmpty)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(e.imagenPrincipal, fit: BoxFit.cover, height: 180, width: double.infinity),
+              ),
+            const SizedBox(height: 12),
+            const Divider(),
+            ...e.plantas.entries.map((entry) {
+              final planta = entry.key;
+              final extintores = entry.value;
+              return ExpansionTile(
+                title: Text(planta, style: const TextStyle(fontWeight: FontWeight.bold)),
+                children: extintores.map((ex) {
+                  return ListTile(
+                    leading: GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => Dialog(
+                            backgroundColor: Colors.transparent,
+                            insetPadding: EdgeInsets.all(16),
+                            child: InteractiveViewer(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(ex.imagen, fit: BoxFit.contain),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Image.asset(ex.imagen, width: 50, height: 50, fit: BoxFit.cover),
+                    ),
+                    title: Text(ex.descripcion),
+                  );
+                }).toList(),
+              );
+            }).toList(),
+            const SizedBox(height: 8),
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar"))
+            ]),
+          ],
+        ),
+      ),
+    );
   }
 
   List<Marker> _buildEdificioMedianoMarkers() {
@@ -142,21 +207,76 @@ class _OSMMapState extends State<OSMMap> {
         height: 60,
         child: GestureDetector(
           onTap: () {
-            showDialog(
+            showModalBottomSheet(
               context: context,
-              builder: (_) => AlertDialog(
-                title: Text(e.nombre),
-                content: Text(e.informacion),
-                actions: [
-                  TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
-                ],
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
+              builder: (_) => _buildEdificioMedSheet(e),
             );
           },
           child: Container(width: double.infinity, height: double.infinity, color: Colors.transparent),
         ),
       );
     }).toList();
+  }
+
+  Widget _buildEdificioMedSheet(EdificioMed e) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(child: Text(e.nombre, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
+            const SizedBox(height: 12),
+            if (e.imagenPrincipal.isNotEmpty)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(e.imagenPrincipal, fit: BoxFit.cover, height: 180, width: double.infinity),
+              ),
+            const SizedBox(height: 12),
+            const Divider(),
+            ...e.plantas.entries.map((entry) {
+              final planta = entry.key;
+              final extintores = entry.value;
+              return ExpansionTile(
+                title: Text(planta, style: const TextStyle(fontWeight: FontWeight.bold)),
+                children: extintores.map((ex) {
+                  return ListTile(
+                    leading: GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => Dialog(
+                            backgroundColor: Colors.transparent,
+                            insetPadding: EdgeInsets.all(16),
+                            child: InteractiveViewer(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(ex.imagen, fit: BoxFit.contain),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Image.asset(ex.imagen, width: 50, height: 50, fit: BoxFit.cover),
+                    ),
+                    title: Text(ex.descripcion),
+                  );
+                }).toList(),
+              );
+            }).toList(),
+            const SizedBox(height: 8),
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar"))
+            ]),
+          ],
+        ),
+      ),
+    );
   }
 
   List<Marker> _buildEdificioHorizontalMarkers() {
@@ -167,15 +287,13 @@ class _OSMMapState extends State<OSMMap> {
         height: 40,
         child: GestureDetector(
           onTap: () {
-            showDialog(
+            showModalBottomSheet(
               context: context,
-              builder: (_) => AlertDialog(
-                title: Text(e.nombre),
-                content: Text(e.informacion),
-                actions: [
-                  TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
-                ],
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
+              builder: (_) => _buildEdificioHorSheet(e),
             );
           },
           child: Container(width: double.infinity, height: double.infinity, color: Colors.transparent),
@@ -183,6 +301,73 @@ class _OSMMapState extends State<OSMMap> {
       );
     }).toList();
   }
+
+  Widget _buildEdificioHorSheet(EdificioHor e) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(
+              child: Text(
+                e.nombre,
+                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+            if (e.imagenPrincipal.isNotEmpty)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  e.imagenPrincipal,
+                  fit: BoxFit.cover,
+                  height: 180,
+                  width: double.infinity,
+                ),
+              ),
+            const Divider(),
+            ...e.plantas.entries.map((entry) {
+              final planta = entry.key;
+              final extintores = entry.value;
+              return ExpansionTile(
+                title: Text(planta, style: const TextStyle(fontWeight: FontWeight.bold)),
+                children: extintores.map((ex) {
+                  return ListTile(
+                    leading: GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => Dialog(
+                            backgroundColor: Colors.transparent,
+                            insetPadding: EdgeInsets.all(16),
+                            child: InteractiveViewer(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(ex.imagen, fit: BoxFit.contain),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Image.asset(ex.imagen, width: 50, height: 50, fit: BoxFit.cover),
+                    ),
+                    title: Text(ex.descripcion),
+                  );
+                }).toList(),
+              );
+            }).toList(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar"))],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
 
   List<Marker> _buildEdificioVerticalMarkers() {
     return edificiosverticales.map((e) {
@@ -192,46 +377,203 @@ class _OSMMapState extends State<OSMMap> {
         height: 100,
         child: GestureDetector(
           onTap: () {
-            showDialog(
+            showModalBottomSheet(
               context: context,
-              builder: (_) => AlertDialog(
-                title: Text(e.nombre),
-                content: Text(e.informacion),
-                actions: [
-                  TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
-                ],
-              ),
+              builder: (_) => _buildEdificioVerticalSheet(e),
             );
           },
-          child: Container(width: double.infinity, height: double.infinity, color: Colors.transparent),
+          child: Icon(Icons.health_and_safety, color: Colors.greenAccent),
         ),
+
       );
     }).toList();
   }
 
+  Widget _buildEdificioVerticalSheet(EdificioVer e) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(
+              child: Text(
+                e.nombre,
+                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 12),
+            if (e.imagenPrincipal.isNotEmpty)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  e.imagenPrincipal,
+                  fit: BoxFit.cover,
+                  height: 180,
+                  width: double.infinity,
+                ),
+              ),
+            const SizedBox(height: 12),
+            const Divider(),
+            // 🔽 Nuevo: Listado por plantas
+            ...e.plantas.entries.map((entry) {
+              final planta = entry.key;
+              final extintores = entry.value;
+              return ExpansionTile(
+                title: Text(planta,
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                children: extintores.map((ex) {
+                  return ListTile(
+                    leading: GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => Dialog(
+                            backgroundColor: Colors.transparent,
+                            insetPadding: EdgeInsets.all(16),
+                            child: InteractiveViewer( // 👉 Permite hacer zoom y mover
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(
+                                  ex.imagen,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Image.asset(
+                        ex.imagen,
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    title: Text(ex.descripcion),
+                  );
+
+                }).toList(),
+              );
+            }).toList(),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text("Cerrar"),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
   List<Marker> _buildPuntosReunionMarkers() {
     return puntosdereunion.map((e) {
       return Marker(
         point: LatLng(e.lat, e.lng),
         width: 50,
         height: 50,
-        child: IconButton(
-          icon: const Icon(Icons.health_and_safety, color: Colors.greenAccent),
-          onPressed: () {
-            showDialog(
+        child: GestureDetector(
+          onTap: () {
+            showModalBottomSheet(
               context: context,
-              builder: (_) => AlertDialog(
-                title: Text(e.nombre),
-                content: Text(e.informacion),
-                actions: [
-                  TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
-                ],
-              ),
+              builder: (_) => _buildPuntoReunionSheet(e),
             );
           },
+          child: Icon(Icons.health_and_safety, color: Colors.greenAccent),
         ),
+
       );
     }).toList();
+  }
+
+  Widget _buildPuntoReunionSheet(PuntoReunion e) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(
+              child: Text(
+                e.nombre,
+                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 12),
+            if (e.imagenPrincipal.isNotEmpty)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  e.imagenPrincipal,
+                  fit: BoxFit.cover,
+                  height: 180,
+                  width: double.infinity,
+                ),
+              ),
+            const SizedBox(height: 12),
+            const Divider(),
+            // 🔽 Nuevo: Listado por plantas
+            ...e.plantas.entries.map((entry) {
+              final planta = entry.key;
+              final extintores = entry.value;
+              return ExpansionTile(
+                title: Text(planta,
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                children: extintores.map((ex) {
+                  return ListTile(
+                    leading: GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => Dialog(
+                            backgroundColor: Colors.transparent,
+                            insetPadding: EdgeInsets.all(16),
+                            child: InteractiveViewer( // 👉 Permite hacer zoom y mover
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(
+                                  ex.imagen,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Image.asset(
+                        ex.imagen,
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    title: Text(ex.descripcion),
+                  );
+
+                }).toList(),
+              );
+            }).toList(),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text("Cerrar"),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   List<Marker> _buildPorteriaMarkers() {
@@ -240,39 +582,112 @@ class _OSMMapState extends State<OSMMap> {
         point: LatLng(e.lat, e.lng),
         width: 50,
         height: 50,
-        child: IconButton(
-          icon: const Icon(Icons.security, color: Colors.grey),
-          onPressed: () {
-            showDialog(
+        child: GestureDetector(
+          onTap: () {
+            showModalBottomSheet(
               context: context,
-              builder: (_) => AlertDialog(
-                title: Text(e.nombre),
-                content: Text(e.informacion),
-                actions: [
-                  TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
-                ],
-              ),
+              builder: (_) => _buildPorteriasSheet(e),
             );
           },
+          child: Icon(Icons.health_and_safety, color: Colors.greenAccent),
         ),
+
       );
     }).toList();
   }
 
+  Widget _buildPorteriasSheet(Porterias e) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(
+              child: Text(
+                e.nombre,
+                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 12),
+            if (e.imagenPrincipal.isNotEmpty)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  e.imagenPrincipal,
+                  fit: BoxFit.cover,
+                  height: 180,
+                  width: double.infinity,
+                ),
+              ),
+            const SizedBox(height: 12),
+            const Divider(),
+            // 🔽 Nuevo: Listado por plantas
+            ...e.plantas.entries.map((entry) {
+              final planta = entry.key;
+              final extintores = entry.value;
+              return ExpansionTile(
+                title: Text(planta,
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                children: extintores.map((ex) {
+                  return ListTile(
+                    leading: GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => Dialog(
+                            backgroundColor: Colors.transparent,
+                            insetPadding: EdgeInsets.all(16),
+                            child: InteractiveViewer( // 👉 Permite hacer zoom y mover
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(
+                                  ex.imagen,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Image.asset(
+                        ex.imagen,
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    title: Text(ex.descripcion),
+                  );
+
+                }).toList(),
+              );
+            }).toList(),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text("Cerrar"),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return FlutterMap(
+      mapController: _mapController,
       options: MapOptions(
         initialCenter: _initialCoords,
         initialZoom: 18,
         maxZoom: 20,
-        cameraConstraint: CameraConstraint.contain(
-          bounds: LatLngBounds(
-            const LatLng(25.84576, -97.45573),
-            const LatLng(25.83873, -97.45160),
-          ),
-        ),
         interactionOptions: const InteractionOptions(
           flags: InteractiveFlag.drag | InteractiveFlag.pinchZoom | InteractiveFlag.scrollWheelZoom,
         ),
@@ -292,7 +707,6 @@ class _OSMMapState extends State<OSMMap> {
               );
             }).toList(),
           ),
-
         if (roadsGeoJson.polylines.isNotEmpty)
           PolylineLayer(
             polylines: roadsGeoJson.polylines.map((line) {
@@ -310,9 +724,9 @@ class _OSMMapState extends State<OSMMap> {
             markers: [
               Marker(
                 point: userLocation!,
-                width: 40,
-                height: 40,
-                child: const Icon(Icons.my_location, size: 20, color: Colors.blue),
+                width: 20,
+                height: 20,
+                child: const Icon(Icons.circle, size: 15, color: Colors.red),
               ),
             ],
           ),
