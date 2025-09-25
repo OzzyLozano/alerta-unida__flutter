@@ -1,3 +1,4 @@
+import 'package:app_test/config.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
@@ -22,6 +23,11 @@ class NotificationService {
     const InitializationSettings settings = InitializationSettings(
       android: androidSettings,
       iOS: iosSettings,
+      windows: WindowsInitializationSettings(
+        appName: 'test',
+        appUserModelId: 'com.app_test.alertaunida',
+        guid: AppConfig.guid,
+      ),
     );
 
     await _notifications.initialize(settings);

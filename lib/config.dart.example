@@ -1,0 +1,10 @@
+class AppConfig {
+ // static const String apiUrl = 'http://example.test:8000'; // Local backend
+  static const String apiUrl = 'https://your-api';
+
+  static const String pusherApiKey = 'pusher-key';
+  static const String pusherCluster = 'pusher-cluster'; // Producción
+
+  // get the guid by runninf [guid]::NewGuid() on powershell
+  static const String guid = 'your-guid';
+}
