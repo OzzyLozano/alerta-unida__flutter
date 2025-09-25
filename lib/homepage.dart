@@ -45,14 +45,20 @@ class _HomePageState extends State<HomePage> {
       label: 'Reportes',
     ),
   ];
-  static const List<Widget> appTitle = <Widget>[
-    Text('Alertas', style: TextStyle(fontSize: 32,),),
-    Text('Mapa', style: TextStyle(fontSize: 32,),),
-    Text('Bienvenido/a', style: TextStyle(fontSize: 32,),),
-    Text('Perfil', style: TextStyle(fontSize: 32,),),
-    Text('Reportes', style: TextStyle(fontSize: 32,),),
+  static const List<String> appTitlesText = [
+    'Alertas',
+    'Mapa',
+    'Bienvenido/a',
+    'Perfil',
+    'Reportes',
   ];
 
+  static final List<Widget> appTitle = appTitlesText.map((title) {
+    return Text(
+      title,
+      textAlign: TextAlign.center,
+    );
+  }).toList();
   void onTapped(int index) {
     setState(() {
       _selectedIndex = index;

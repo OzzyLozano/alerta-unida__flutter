@@ -6,6 +6,16 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'firebase_options.dart';
 import 'package:app_test/services/notifications_service.dart';
 
+// Handler para notificaciones cuando la app está en segundo plano o cerrada
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await NotificationService.showNotification(
+    id: DateTime.now().millisecondsSinceEpoch.remainder(100000),
+    title: message.notification?.title ?? '¡Alerta de Emergencia!',
+    body: message.notification?.body ?? 'Tienes un nuevo mensaje',
+    payload: message.data.toString(),
+  );
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -14,9 +24,13 @@ Future<void> main() async {
   );
   await NotificationService.initialize();
   await _setupPushNotifications();
+  // Registrar handler de background
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
 
   runApp(const MainApp());
 }
+
 
 const appTitle = 'Alerta Unida';
 const TextStyle styleOptions = TextStyle(fontSize: 24,);

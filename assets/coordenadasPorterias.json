@@ -3,7 +3,7 @@
     "nombre": "Estacionamiento Maestros",
     "lat": 25.842518405946027,
     "lng": -97.45210318641035,
-    "imagenPrincipal": "assets/extintores/img.png",
+    "imagenPrincipal": "assets/puntosdereunion/porteriamaestros.jpg",
     "plantas": {
       "General": [
         { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
@@ -14,10 +14,10 @@
     "nombre": "Porteria Trasera",
     "lat": 25.839884589171643,
     "lng": -97.45223181728915,
-    "imagenPrincipal": "assets/Edificios/porteria_trasera.jpg",
+    "imagenPrincipal": "assets/puntosdereunion/porteriamaestros.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/porteria_trasera.jpg", "descripcion": "" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "" }
       ]
     }
   },
@@ -36,7 +36,7 @@
     "nombre": "Estacionamiento Estudiantes",
     "lat": 25.84388371626751,
     "lng": -97.45295672234292,
-    "imagenPrincipal": "assets/extintores/img.png",
+    "imagenPrincipal": "assets/puntosdereunion/porteriaestudiantes.jpg",
     "plantas": {
       "General": [
         { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
@@ -47,7 +47,7 @@
     "nombre": "Estacionamiento Estudiantes 2",
     "lat": 25.84513516957386,
     "lng": -97.45444294740378,
-    "imagenPrincipal": "assets/Edificios/img.png",
+    "imagenPrincipal": "assets/puntosdereunion/porteriasegunda.jpg",
     "plantas": {
       "General": [
         { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯CO2" }
@@ -58,10 +58,10 @@
     "nombre": "Porteria Tecopias",
     "lat": 25.84336207400085,
     "lng": -97.45500821452097,
-    "imagenPrincipal": "assets/Edificios/porteriatecopias.jpg",
+    "imagenPrincipal": "assets/puntosdereunion/porteriatecopias.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/porteriatecopias.jpg", "descripcion": "1 🧯PQS" }
+        { "imagen": "assets/puntodereunion/porteriatecopias.jpg", "descripcion": "1 🧯PQS" }
       ]
     }
   }

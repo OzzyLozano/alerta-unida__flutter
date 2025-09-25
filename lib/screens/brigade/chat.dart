@@ -203,75 +203,168 @@ class _ChatScreenState extends State<ChatScreen> {
     pusher.disconnect();
     super.dispose();
   }
+  /// --- Menú de 3 puntos ---
+  void _onMenuSelected(String value) {
+    switch (value) {
+      case 'detalles':
+        _showDetailsDialog();
+        break;
+      case 'participantes':
+        _showParticipantsDialog();
+        break;
+      case 'personalizacion':
+        _showCustomizationDialog();
+        break;
+    }
+  }
+
+  void _showDetailsDialog() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("Detalles de la alerta"),
+        content: const Text(
+            "Aquí puedes mostrar los datos de la alerta (tipo, ubicación, hora, etc.)."),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
+        ],
+      ),
+    );
+  }
+
+  void _showParticipantsDialog() {
+    final uniqueUsers = messages
+        .where((m) => m["sender"] != "Tú")
+        .map((m) => m["sender"])
+        .toSet()
+        .toList();
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("Participantes"),
+        content: uniqueUsers.isEmpty
+            ? const Text("Aún no hay otros participantes.")
+            : Column(
+          mainAxisSize: MainAxisSize.min,
+          children: uniqueUsers.map((u) => ListTile(title: Text(u))).toList(),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
+        ],
+      ),
+    );
+  }
+
+  void _showCustomizationDialog() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("Personalización"),
+        content: const Text("Aquí podrías permitir cambiar tema o tamaño de letra."),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text("Chat Alerta ${widget.alertId}"),
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: _onMenuSelected,
+            itemBuilder: (context) => const [
+              PopupMenuItem(value: 'detalles', child: Text('Detalles de la alerta')),
+              PopupMenuItem(value: 'participantes', child: Text('Participantes')),
+              PopupMenuItem(value: 'personalizacion', child: Text('Personalización')),
+            ],
+          ),
+        ],
       ),
       body: FutureBuilder(
-        future: _futureMessages, 
+        future: _futureMessages,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
               child: Text(
-                'An error has occurred: ${snapshot.error}', 
-                style: const TextStyle(fontSize: 20),
+                'Error: ${snapshot.error}',
+                style: const TextStyle(fontSize: 18),
               ),
             );
           } else if (snapshot.hasData) {
-            if (messages.isEmpty) {
-              messages = snapshot.data!;
-            }
-            
+            if (messages.isEmpty) messages = snapshot.data!;
             return Column(
               children: [
                 Expanded(
                   child: ListView.builder(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(12.0),
                     itemCount: messages.length,
                     itemBuilder: (context, index) {
                       final msg = messages[index];
                       final isMe = msg["isMe"];
-
                       return Align(
-                        alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
+                        alignment:
+                        isMe ? Alignment.centerRight : Alignment.centerLeft,
                         child: Container(
-                          margin: const EdgeInsets.symmetric(vertical: 4.0),
+                          margin: const EdgeInsets.symmetric(vertical: 6.0),
                           padding: const EdgeInsets.all(12.0),
                           decoration: BoxDecoration(
-                            color: isMe ? Colors.blue : Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10),
+                            color: isMe ? Colors.blue[600] : Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 4,
+                                offset: const Offset(2, 2),
+                              ),
+                            ],
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               if (!isMe)
-                                Text(
-                                  msg["sender"],
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87,
-                                    fontSize: 12,
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 4.0),
+                                  child: Text(
+                                    msg["sender"],
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87,
+                                      fontSize: 13,
+                                    ),
                                   ),
                                 ),
                               Text(
                                 msg["text"],
                                 style: TextStyle(
-                                  color: isMe ? Colors.white : Colors.black,
+                                  color: isMe ? Colors.white : Colors.black87,
+                                  fontSize: 15,
                                 ),
                               ),
                             ],
                           ),
                         ),
                       );
-                    }
-                  )
+                    },
+                  ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  color: Colors.grey[200],
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 4,
+                        offset: const Offset(0, -2),
+                      ),
+                    ],
+                  ),
                   child: Row(
                     children: [
                       Expanded(
@@ -293,12 +386,10 @@ class _ChatScreenState extends State<ChatScreen> {
               ],
             );
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
-        }
-      )
+        },
+      ),
     );
   }
 }

@@ -7,10 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CheckinForm extends StatefulWidget {
   final int alertId;
 
-  const CheckinForm({
-    Key? key,
-    required this.alertId,
-  }) : super(key: key);
+  const CheckinForm({Key? key, required this.alertId}) : super(key: key);
 
   @override
   State<CheckinForm> createState() => _CheckinFormState();
@@ -28,14 +25,16 @@ class _CheckinFormState extends State<CheckinForm> {
     setState(() => _isLoading = true);
 
     try {
-      // Si tu app guardó userName/userEmail en SharedPreferences, los añadimos (opcional)
       final prefs = await SharedPreferences.getInstance();
-      final userId = prefs.getInt('userId');
+      final userId = prefs.getInt('userId'); // ✅ solo ID de usuario
 
-      print(widget.alertId);
-      print(userId);
-      print(_meetingPoint);
-      print(_areYouOkay);
+      if (userId == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("No se encontró el ID de usuario")),
+        );
+        setState(() => _isLoading = false);
+        return;
+      }
 
       final Map<String, dynamic> payload = {
         'alert_id': widget.alertId,
@@ -50,21 +49,19 @@ class _CheckinFormState extends State<CheckinForm> {
         body: jsonEncode(payload),
       );
 
-      String serverMsg = 'Check-in registrado';
+      String serverMsg = 'Check-in registrado correctamente';
       try {
         final data = jsonDecode(response.body);
         if (data is Map && data['message'] is String) {
           serverMsg = data['message'];
         }
-      } catch (_) {
-        // Si la respuesta no es JSON válido, usamos el mensaje por defecto
-      }
+      } catch (_) {}
 
       if (response.statusCode == 201 || response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(serverMsg)),
         );
-        Navigator.pop(context, true);
+
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(serverMsg.isNotEmpty ? serverMsg : 'Error al registrar')),

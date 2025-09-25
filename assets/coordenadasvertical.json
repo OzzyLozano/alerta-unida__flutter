@@ -3,10 +3,10 @@
     "nombre": "Laboratorio de Fisica",
     "lat": 25.841713941974906,
     "lng": -97.45427824341648,
-    "imagenPrincipal": "assets/Edificios/lab_fisica.jpg",
+    "imagenPrincipal": "assets/Edificios/laboratorio_fisica.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/lab_fisica.jpg", "descripcion": "1 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
       ]
     }
   },
@@ -14,10 +14,10 @@
     "nombre": "Nodo",
     "lat": 25.8440399781334,
     "lng": -97.45435291401535,
-    "imagenPrincipal": "assets/Edificios/nodo.jpg",
+    "imagenPrincipal": "assets/Edificios/nite.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/nodo.jpg", "descripcion": "1 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
       ]
     }
   },
@@ -25,10 +25,10 @@
     "nombre": "Laboratorio de Contabilidad",
     "lat": 25.84193723607336,
     "lng": -97.4542688556852,
-    "imagenPrincipal": "assets/Edificios/lab_contabilidad.jpg",
+    "imagenPrincipal": "assets/Edificios/laboratorio_conta.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/lab_contabilidad.jpg", "descripcion": "1 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
       ]
     }
   }
