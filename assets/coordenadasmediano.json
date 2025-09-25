@@ -39,10 +39,10 @@
     "nombre": "Laboratorio de Mecatronica",
     "lat": 25.84152045936866,
     "lng": -97.45288077746697,
-    "imagenPrincipal": "assets/Edificios/lab_mecatronica.jpg",
+    "imagenPrincipal": "assets/Edificios/mecatronica.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/lab_mecatronica.jpg", "descripcion": "2 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
       ]
     }
   },
@@ -50,19 +50,19 @@
     "nombre": "Laboratorio de Quimica",
     "lat": 25.844764793610327,
     "lng": -97.45448244930219,
-    "imagenPrincipal": "assets/Edificios/lab_quimica.jpg",
+    "imagenPrincipal": "assets/Edificios/laboratorio_quimica_general.jpg",
     "plantas": {
       "Lab. Quimica - Analisis": [
-        { "imagen": "assets/extintores/lab_quimica_analisis.jpg", "descripcion": "2 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
       ],
       "Lab. Quimica - General": [
-        { "imagen": "assets/extintores/lab_quimica_general.jpg", "descripcion": "1 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
       ],
       "Lab. Quimica - Salon": [
-        { "imagen": "assets/extintores/lab_quimica_salon.jpg", "descripcion": "1 🧯CO2" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯CO2" }
       ],
       "Lab. Ing. Quimica - Lab": [
-        { "imagen": "assets/extintores/lab_ing_quimica.jpg", "descripcion": "4 🧯PQS y 1 🧯CO2" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "4 🧯PQS y 1 🧯CO2" }
       ]
     }
   },
@@ -70,10 +70,10 @@
     "nombre": "Laboratorio de Ingenieria Civil",
     "lat": 25.84452822878731,
     "lng": -97.45406799663198,
-    "imagenPrincipal": "assets/Edificios/lab_civil.jpg",
+    "imagenPrincipal": "assets/Edificios/civil.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/lab_civil.jpg", "descripcion": "2 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
       ]
     }
   },
@@ -81,10 +81,10 @@
     "nombre": "Laboratorio de Electromecanica",
     "lat": 25.844419132546296,
     "lng": -97.45443954284613,
-    "imagenPrincipal": "assets/Edificios/lab_electromecanica.jpg",
+    "imagenPrincipal": "assets/Edificios/laboratorioelectronica.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/lab_electromecanica.jpg", "descripcion": "4 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "4 🧯PQS" }
       ]
     }
   },
@@ -92,10 +92,10 @@
     "nombre": "Laboratorio de Electronica",
     "lat": 25.841768258586974,
     "lng": -97.45346618712347,
-    "imagenPrincipal": "assets/Edificios/lab_electronica.jpg",
+    "imagenPrincipal": "assets/Edificios/laboratorioelectronica",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/lab_electronica.jpg", "descripcion": "3 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "3 🧯PQS" }
       ]
     }
   },
@@ -103,10 +103,10 @@
     "nombre": "Centro de Idiomas",
     "lat": 25.844191875869242,
     "lng": -97.45377061457438,
-    "imagenPrincipal": "assets/Edificios/centro_idiomas.jpg",
+    "imagenPrincipal": "assets/Edificios/vinculacion.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/centro_idiomas.jpg", "descripcion": "2 🧯PQS" }
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
       ]
     }
   },
@@ -114,10 +114,11 @@
     "nombre": "Laboratorio de Ingenieria en Gestion Empresarial/ Industrial",
     "lat": 25.841555895934224,
     "lng": -97.45318581943528,
-    "imagenPrincipal": "assets/Edificios/lab_gestion_industrial.jpg",
+    "imagenPrincipal": "assets/Edificios/laboratorioindustrialige.jpg",
     "plantas": {
       "General": [
-        { "imagen": "assets/extintores/lab_gestion_industrial.jpg", "descripcion": "4 🧯CO2" }
+        { "imagen": "assets/extintores/ige.jpg", "descripcion": "4 🧯CO2" },
+        { "imagen": "assets/extintores/ige2.jpg", "descripcion": ""}
       ]
     }
   }

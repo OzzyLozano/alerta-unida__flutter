@@ -147,47 +147,90 @@ class ReportsList extends StatelessWidget {
       controller: ScrollController(),
       itemCount: reports.length,
       itemBuilder: (context, index) {
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Image.network(
-                '${AppConfig.apiUrl}/storage/${reports[index].img}',
-                width: MediaQuery.of(context).size.width - 20,
-                fit: BoxFit.cover,
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 6,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Imagen del reporte
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                      '${AppConfig.apiUrl}/storage/${reports[index].img}',
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Título
+                  Text(
+                    reports[index].title,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+
+                  // Descripción
+                  Text(
+                    reports[index].description,
+                    style: const TextStyle(fontSize: 16, color: Colors.black87),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // Botón
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () async {
+                          final result = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ReviewReportScreen(report: reports[index]),
+                            ),
+                          );
+
+                          if (result == true) {
+                            refreshReports();
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blueGrey,
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: const Text(
+                          'Revisar',
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Text(reports[index].title, style: const TextStyle(fontSize: 24),),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 0, bottom: 16),
-              child: Text(reports[index].description),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    final result = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => ReviewReportScreen(report: reports[index]),
-                      ),
-                    );
-
-                    if (result == true) {
-                      refreshReports();
-                    }
-                  },
-                  child: const Text('Revisar'),
-                )
-              ],
-            )
-          ]
+          ),
         );
-      }
+      },
     );
   }
 }

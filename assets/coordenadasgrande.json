@@ -72,5 +72,282 @@
         { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
       ]
     }
+  },
+  {
+    "nombre": "Edificio K",
+    "lat": 25.84176791943041,
+    "lng": -97.45393607975393,
+    "imagenPrincipal": "assets/Edificios/salonesk.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Edificio H",
+    "lat": 25.84224095814001,
+    "lng": -97.45433744102709,
+    "imagenPrincipal": "assets/Edificios/salones_h.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Edificio M",
+    "lat": 25.842171522399443,
+    "lng": -97.45462872541654,
+    "imagenPrincipal": "assets/Edificios/salones_m.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Edificio N",
+    "lat": 25.842581050974594,
+    "lng": -97.45447284890544,
+    "imagenPrincipal": "assets/Edificios/salonesn.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Edificio J",
+    "lat": 25.842437119674923,
+    "lng": -97.45418923479957,
+    "imagenPrincipal": "assets/Edificios/salones_j.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Edificio O",
+    "lat": 25.843425934306925,
+    "lng": -97.45455096498875,
+    "imagenPrincipal": "assets/Edificios/saloneso.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Edificio I",
+    "lat": 25.8434503655042,
+    "lng": -97.45423996439835,
+    "imagenPrincipal": "assets/Edificios/salonesi.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Edificio Q",
+    "lat": 25.843625404130368,
+    "lng": -97.45425986757499,
+    "imagenPrincipal": "assets/Edificios/salonesq.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Edificio T",
+    "lat": 25.843985355484342,
+    "lng": -97.45394371146887,
+    "imagenPrincipal": "assets/Edificios/salonest.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Auditorio Fundadores",
+    "lat": 25.843227277824564,
+    "lng": -97.45470258918263,
+    "imagenPrincipal": "assets/Edificios/fundadores.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "", "descripcion": "" }
+      ]
+    }
+  },
+  {
+    "nombre": "Sala de Maestros",
+    "lat": 25.842515855840972,
+    "lng": -97.4531153879508,
+    "imagenPrincipal": "assets/Edificios/salademaestros.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "assets/extintores/extintormaestros.jpg", "descripcion": "1 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Centro de Computo",
+    "lat": 25.842860582885045,
+    "lng": -97.45459742628637,
+    "imagenPrincipal": "assets/Edificios/sistemas.jpg",
+    "plantas": {
+      "Planta Baja": [
+        { "imagen": "assets/extintores/plantabajasistemas.jpg", "descripcion": "2 🧯PQS" }
+      ],
+      "Planta Alta": [
+        { "imagen": "assets/extintores/plantaaltasistemas.jpg", "descripcion": "1 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Biblioteca",
+    "lat": 25.843056164053205,
+    "lng": -97.45383646615647,
+    "imagenPrincipal": "assets/Edificios/centrodeinformacion.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Cafetería",
+    "lat": 25.84305729237811,
+    "lng": -97.45421132432467,
+    "imagenPrincipal": "assets/Edificios/cafeteria.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/plantabajacafeteria.jpg", "descripcion": "2 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Laboratorio de Mecatronica",
+    "lat": 25.84152045936866,
+    "lng": -97.45288077746697,
+    "imagenPrincipal": "assets/Edificios/mecatronica.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Laboratorio de Quimica",
+    "lat": 25.844764793610327,
+    "lng": -97.45448244930219,
+    "imagenPrincipal": "assets/Edificios/laboratorio_quimica_general.jpg",
+    "plantas": {
+      "Lab. Quimica - Analisis": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
+      ],
+      "Lab. Quimica - General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
+      ],
+      "Lab. Quimica - Salon": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯CO2" }
+      ],
+      "Lab. Ing. Quimica - Lab": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "4 🧯PQS y 1 🧯CO2" }
+      ]
+    }
+  },
+  {
+    "nombre": "Laboratorio de Ingenieria Civil",
+    "lat": 25.84452822878731,
+    "lng": -97.45406799663198,
+    "imagenPrincipal": "assets/Edificios/civil.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Laboratorio de Electromecanica",
+    "lat": 25.844419132546296,
+    "lng": -97.45443954284613,
+    "imagenPrincipal": "assets/Edificios/laboratorioelectronica.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "4 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Laboratorio de Electronica",
+    "lat": 25.841768258586974,
+    "lng": -97.45346618712347,
+    "imagenPrincipal": "assets/Edificios/laboratorioelectronica",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "3 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Centro de Idiomas",
+    "lat": 25.844191875869242,
+    "lng": -97.45377061457438,
+    "imagenPrincipal": "assets/Edificios/vinculacion.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Laboratorio de Ingenieria en Gestion Empresarial/ Industrial",
+    "lat": 25.841555895934224,
+    "lng": -97.45318581943528,
+    "imagenPrincipal": "assets/Edificios/laboratorioindustrialige.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/ige.jpg", "descripcion": "4 🧯CO2" },
+        { "imagen": "assets/extintores/ige2.jpg", "descripcion": ""}
+      ]
+    }
+  },
+  {
+    "nombre": "Laboratorio de Fisica",
+    "lat": 25.841713941974906,
+    "lng": -97.45427824341648,
+    "imagenPrincipal": "assets/Edificios/laboratorio_fisica.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Nodo",
+    "lat": 25.8440399781334,
+    "lng": -97.45435291401535,
+    "imagenPrincipal": "assets/Edificios/nite.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
+      ]
+    }
+  },
+  {
+    "nombre": "Laboratorio de Contabilidad",
+    "lat": 25.84193723607336,
+    "lng": -97.4542688556852,
+    "imagenPrincipal": "assets/Edificios/laboratorio_conta.jpg",
+    "plantas": {
+      "General": [
+        { "imagen": "assets/extintores/img.png", "descripcion": "1 🧯PQS" }
+      ]
+    }
   }
 ]

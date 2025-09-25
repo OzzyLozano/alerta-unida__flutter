@@ -60,6 +60,12 @@ class NotificationService {
       iOS: iosDetails,
     );
 
-    await _notifications.show(id, title, body, details, payload: payload);
+    await _notifications.show(
+      id,
+      title,
+      body,
+      details,
+      payload: payload,
+    );
   }
 }
