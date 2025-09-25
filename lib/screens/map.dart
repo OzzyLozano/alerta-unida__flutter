@@ -105,7 +105,7 @@ class _OSMMapState extends State<OSMMap> {
       context: context,
       builder: (_) => Dialog(
         backgroundColor: Colors.transparent,
-        insetPadding: EdgeInsets.all(0),
+        insetPadding: const EdgeInsets.all(0),
         child: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: PhotoView(
@@ -332,10 +332,10 @@ class _OSMMapState extends State<OSMMap> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 5, offset: Offset(0, 2))],
+                boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 5, offset: Offset(0, 2))],
               ),
-              child: Row(
-                children: const [
+              child: const Row(
+                children: [
                   Icon(Icons.search, color: Colors.black54),
                   SizedBox(width: 8),
                   Text("Buscar ubicación...", style: TextStyle(fontSize: 16, color: Colors.black54)),

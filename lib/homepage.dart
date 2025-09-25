@@ -8,7 +8,6 @@ import 'package:app_test/screens/user/user_home.dart';
 import 'package:app_test/screens/user/user_reports.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,8 +15,6 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
-
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 2;
@@ -49,29 +46,17 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
   static const List<String> appTitlesText = [
-    'Alertas 🔔',
-    'Mapa 🗺️',
-    'Bienvenido/a 👋',
-    'Perfil 👤',
-    'Reportes 📊',
+    'Alertas',
+    'Mapa',
+    'Bienvenido/a',
+    'Perfil',
+    'Reportes',
   ];
 
   static final List<Widget> appTitle = appTitlesText.map((title) {
     return Text(
       title,
       textAlign: TextAlign.center,
-      style: GoogleFonts.robotoSlab(
-        fontSize: 32,
-        fontWeight: FontWeight.bold,
-        color: Colors.deepOrangeAccent,
-        shadows: [
-          Shadow(
-            offset: Offset(2, 2),
-            blurRadius: 4.0,
-            color: Colors.black26,
-          ),
-        ],
-      ),
     );
   }).toList();
   void onTapped(int index) {
@@ -79,7 +64,6 @@ class _HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
-
 
   late SharedPreferences preferences;
 
@@ -127,4 +111,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-

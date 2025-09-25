@@ -1,3 +1,4 @@
+import 'package:app_test/config.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
@@ -5,14 +6,12 @@ class NotificationService {
   factory NotificationService() => _instance;
   NotificationService._internal();
 
-  static final FlutterLocalNotificationsPlugin _notifications =
-  FlutterLocalNotificationsPlugin();
+  static final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
 
-  /// Inicializa las notificaciones locales y crea el canal de emergencia
   static Future<void> initialize() async {
     // Configuración para Android
-    const AndroidInitializationSettings androidSettings =
-    AndroidInitializationSettings('@mipmap/ic_launcher'); // Icono de la app
+    const AndroidInitializationSettings androidSettings = 
+        AndroidInitializationSettings('@mipmap/ic_launcher'); // Usa tu icono
 
     // Configuración para iOS
     const DarwinInitializationSettings iosSettings = DarwinInitializationSettings(
@@ -21,27 +20,20 @@ class NotificationService {
       requestSoundPermission: true,
     );
 
-    const InitializationSettings settings =
-    InitializationSettings(android: androidSettings, iOS: iosSettings);
-
-    await _notifications.initialize(settings);
-
-    // ✅ Crear canal de emergencia explícitamente para FullScreenIntent
-    const AndroidNotificationChannel channel = AndroidNotificationChannel(
-      'alert_channel', // Debe coincidir con el usado en showNotification
-      'Alertas importantes',
-      description: 'Canal para alertas de emergencia',
-      importance: Importance.max, // 🔴 Importante para heads-up/fullscreen
-      playSound: true,
-      sound: RawResourceAndroidNotificationSound('alert_sound'), // mp3 en res/raw/
+    const InitializationSettings settings = InitializationSettings(
+      android: androidSettings,
+      iOS: iosSettings,
+      windows: WindowsInitializationSettings(
+        appName: 'test',
+        appUserModelId: 'com.app_test.alertaunida',
+        guid: AppConfig.guid,
+      ),
     );
 
-    final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
-    await androidPlugin?.createNotificationChannel(channel);
+    await _notifications.initialize(settings);
   }
 
-  /// Mostrar una notificación de alerta **con pop-up (fullscreen)**
+  // Mostrar una notificación
   static Future<void> showNotification({
     required int id,
     required String title,
@@ -50,15 +42,11 @@ class NotificationService {
   }) async {
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'alert_channel', // ID del canal
-      'Alertas importantes',
+      'Alertas importantes', // Nombre del canal
       channelDescription: 'Canal para alertas de emergencia',
       importance: Importance.max,
       priority: Priority.high,
       playSound: true,
-      sound: RawResourceAndroidNotificationSound('alert_sound'),
-      fullScreenIntent: true, // ⚡ Permite que la notificación abra pantalla completa
-      category: AndroidNotificationCategory.alarm,
-      visibility: NotificationVisibility.public,
     );
 
     const DarwinNotificationDetails iosDetails = DarwinNotificationDetails(

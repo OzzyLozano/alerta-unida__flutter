@@ -5,7 +5,6 @@ import 'package:app_test/components/fetch_alerts.dart';
 import 'package:app_test/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:google_fonts/google_fonts.dart';
 
 class ManageAlerts extends StatefulWidget {
   const ManageAlerts({super.key});
@@ -100,7 +99,7 @@ class AlertsList extends StatelessWidget {
                   ListTile(
                     title: Text(
                       alerts[index].title,
-                      style: GoogleFonts.montserrat(
+                      style: const TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.w700,
                         color: Colors.deepPurple,
@@ -108,7 +107,7 @@ class AlertsList extends StatelessWidget {
                     ),
                     subtitle: Text(
                       'Tipo: ${alerts[index].type}\n${alerts[index].content}\n\nEstado: ${alerts[index].status}',
-                      style: GoogleFonts.robotoSlab(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                         color: Colors.black87,
