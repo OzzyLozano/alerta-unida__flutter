@@ -5,6 +5,7 @@ import 'package:app_test/config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ReviewReportScreen extends StatefulWidget {
   final Report report;
@@ -143,13 +144,19 @@ Future<void> authorizeReport(int reportId, {required BuildContext context, requi
       );
       return;
     } else {
+      final preferences = await SharedPreferences.getInstance();
+      final userId = preferences.getInt("userId") ?? 0;
       final response = await http.put(
         Uri.parse('${AppConfig.apiUrl}/api/reports/$reportId/authorize'),
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
         body: jsonEncode({
           'title': title,
           'description': description,
           'type': type,
+          'user_id': userId,
         }),
       );
       
@@ -161,6 +168,7 @@ Future<void> authorizeReport(int reportId, {required BuildContext context, requi
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Response Status: ${response.statusCode}')),
         );
+        print(response.body);
       }
       Navigator.pop(context, true);
     }
@@ -176,11 +184,17 @@ Future<void> authorizeReport(int reportId, {required BuildContext context, requi
 
 Future<void> cancelReport(int reportId, {required BuildContext context}) async {
   try {
+    final preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt("userId") ?? 0;
     final response = await http.put(
       Uri.parse('${AppConfig.apiUrl}/api/reports/$reportId/cancel'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json',
       },
+      body: jsonEncode({
+        'user_id': userId,
+      }),
     );
     
     if (response.statusCode == 200) {
@@ -191,6 +205,7 @@ Future<void> cancelReport(int reportId, {required BuildContext context}) async {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Response Status: ${response.statusCode}')),
       );
+      print('Respuesta: ${response.body}');
     }
     Navigator.pop(context, true);
   } catch (e) {

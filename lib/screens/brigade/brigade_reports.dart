@@ -462,8 +462,12 @@ Future<void> sendReport(BuildContext context, String imagePath, String title, St
         const SnackBar(content: Text('Reporte enviado exitosamente!')),
       );
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
-    } else {
       print('Respuesta: ${response.statusCode}');
+    } else {
+      if (kDebugMode) {
+        print('Respuesta: ${response.statusCode}');
+        print('Respuesta: ${response.headers}');
+      }
     }
   } catch (e) {
     print('Error: $e');
