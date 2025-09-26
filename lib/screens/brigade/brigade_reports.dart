@@ -9,6 +9,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 const String url = '${AppConfig.apiUrl}/api/reports/on-wait';
 
@@ -441,6 +442,8 @@ class DisplayForm extends StatelessWidget {
 
 Future<void> sendReport(BuildContext context, String imagePath, String title, String description) async {
   try {
+    final preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt("userId") ?? 0;
     final uri = Uri.parse('${AppConfig.apiUrl}/api/reports/send-report');
     
     var request = http.MultipartRequest('POST', uri);
@@ -450,7 +453,7 @@ Future<void> sendReport(BuildContext context, String imagePath, String title, St
     
     request.fields['title'] = title;
     request.fields['description'] = description;
-    request.fields['user_id'] = '1';
+    request.fields['user_id'] = userId as String;
 
     var response = await request.send();
     
