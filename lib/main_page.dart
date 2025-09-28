@@ -1,11 +1,11 @@
 import 'package:app_test/screens/profile.dart';
 import 'package:app_test/screens/user/alerts.dart';
-import 'package:app_test/screens/brigade/brigade_alerts.dart';
-import 'package:app_test/screens/brigade/brigade_reports.dart';
-import 'package:app_test/screens/brigade/manage_alerts.dart';
+import 'package:app_test/screens/brigade/homepage.dart';
+import 'package:app_test/screens/brigade/reports.dart';
+import 'package:app_test/screens/brigade/alerts.dart';
 import 'package:app_test/screens/map.dart';
-import 'package:app_test/screens/user/user_home.dart';
-import 'package:app_test/screens/user/user_reports.dart';
+import 'package:app_test/screens/user/homepage.dart';
+import 'package:app_test/screens/user/reports.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,6 +18,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 2;
+  SharedPreferences? preferences;
+
   static const List<Widget> _widgetOptions = <Widget>[
     NavigationDestination(
       selectedIcon: Icon(Icons.notifications_outlined),
@@ -65,8 +67,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  late SharedPreferences preferences;
-
   @override
   void initState() {
     super.initState();
@@ -78,6 +78,8 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
+  bool get isBrigade => preferences?.getBool('isBrigadeMember') ?? false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +87,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: null,
         automaticallyImplyLeading: false,
-        backgroundColor: const Color(0xe6f5f5f5),
+        backgroundColor: Colors.white,
         title: appTitle[_selectedIndex],
       ),
       bottomNavigationBar: NavigationBar(
@@ -97,15 +99,15 @@ class _HomePageState extends State<HomePage> {
         height: 80,
         ),
       body: <Widget>[
-        (preferences.getBool('isBrigadeMember') ?? false) ? 
+        isBrigade ? 
         const ManageAlerts() : const Alerts(),
         const OSMMap(),
-        (preferences.getBool('isBrigadeMember') ?? false) ? 
-        const BrigadeAlerts() : const UserHome(),
-        (preferences.getBool('isBrigadeMember') ?? false) ? 
+        isBrigade ? 
+        const BrigadeHome() : const UserHome(),
+        isBrigade ? 
         const Profile() : 
         const Profile(),
-        (preferences.getBool('isBrigadeMember') ?? false) ? 
+        isBrigade ? 
         const BrigadeReports() : const UserReports()
       ][_selectedIndex],
     );

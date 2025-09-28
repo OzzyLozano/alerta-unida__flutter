@@ -1,8 +1,9 @@
 import 'dart:convert';
+import 'package:app_test/components/button.dart';
 import 'package:app_test/config.dart';
 import 'package:app_test/services/fcm.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:app_test/homepage.dart';
+import 'package:app_test/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -140,27 +141,20 @@ class _BrigadeLoginState extends State<BrigadeLogin> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0),
                 child: Center(
-                  child: ElevatedButton(
+                  child: CmButton(
                     onPressed: () {
                       login();
                     },
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: Size(MediaQuery.of(context).size.width - 20, 50),
-                      backgroundColor: const Color.fromRGBO(120, 186, 60, 1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                    color: const Color.fromRGBO(232, 107, 23, 1),
+                    width: MediaQuery.of(context).size.width - 20,
+                    height: 50,
+                    child: const Text(
+                      'Iniciar Sesión',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20
                       ),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
-                      child: Text(
-                        'Iniciar Sesión como brigadista',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
                   ),
                 ),
               ),

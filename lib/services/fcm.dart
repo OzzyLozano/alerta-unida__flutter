@@ -35,7 +35,6 @@ class FCM {
       final isBrigadeMember = preferences.getBool('isBrigadeMember') ?? false;
       
       if (userId != null && userId > 0) {
-        print('=== ENVIANDO TOKEN FCM ===');
         print('User ID: $userId');
         print('Tipo: ${isBrigadeMember ? 'brigade' : 'user'}');
         print('Device ID: $deviceId');
@@ -89,10 +88,6 @@ class FCM {
       final isBrigadeMember = preferences.getBool('isBrigadeMember') ?? false;
       
       if (userId != null && userId > 0) {
-        print('=== ACTUALIZANDO RELACIÓN TOKEN ===');
-        print('Nuevo User ID: $userId');
-        print('Nuevo Tipo: ${isBrigadeMember ? 'brigade' : 'user'}');
-        
         final response = await http.post(
           Uri.parse('${AppConfig.apiUrl}/api/fcm/refresh-token'),
           headers: {'Content-Type': 'application/json'},
@@ -104,13 +99,13 @@ class FCM {
         );
         
         if (response.statusCode == 200) {
-          print('Relación token-usuario actualizada');
+          print('Tabla de tokens actualizada');
         } else {
-          print('Error actualizando relación: ${response.statusCode}');
+          print('Error actualizando tokens: ${response.statusCode}');
         }
       }
     } catch (e) {
-      print('Error actualizando relación token: $e');
+      print('Error actualizando la tabla de tokens: $e');
     }
   }
 

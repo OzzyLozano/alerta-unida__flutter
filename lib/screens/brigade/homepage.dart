@@ -1,19 +1,20 @@
 import 'package:app_test/components/card.dart';
 import 'package:app_test/models/alert.dart';
 import 'package:app_test/methods/fetch_alerts.dart';
-import 'package:app_test/screens/user/checkin_form.dart';
+import 'package:app_test/screens/brigade/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class Alerts extends StatefulWidget {
-  const Alerts({super.key});
+class BrigadeHome extends StatefulWidget {
+  const BrigadeHome({super.key});
 
   @override
-  _AlertsState createState() => _AlertsState();
+  _BrigadeHomeState createState() => _BrigadeHomeState();
 }
 
-class _AlertsState extends State<Alerts> {
+class _BrigadeHomeState extends State<BrigadeHome> {
   late Future<List<Alert>> futureAlerts;
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -25,12 +26,12 @@ class _AlertsState extends State<Alerts> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: futureAlerts,
+        future: futureAlerts, 
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
               child: Text(
-                'An error has occurred: ${snapshot.error}',
+                'An error has occurred: ${snapshot.error}', 
                 style: const TextStyle(fontSize: 20),
               ),
             );
@@ -41,8 +42,8 @@ class _AlertsState extends State<Alerts> {
               child: CircularProgressIndicator(),
             );
           }
-        },
-      ),
+        }
+      )
     );
   }
 }
@@ -68,65 +69,38 @@ class AlertsList extends StatelessWidget {
     )
     // cuando hay alertas
     : ListView.builder(
+      scrollDirection: Axis.vertical,
+      addAutomaticKeepAlives: false,
+      controller: ScrollController(),
       itemCount: alerts.length,
       itemBuilder: (context, index) {
-        final alert = alerts[index];
         return CmCard(
           children: [
             ListTile(
               title: Text(
-                alert.title,
+                'Chat: ${alerts[index].title}',
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
                 ),
               ),
               subtitle: Text(
-                'Tipo: ${alert.type}\n${alert.content}',
+                'Tipo: ${alerts[index].type}\n${alerts[index].content}',
                 style: const TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.w500,
                 ),
               ),
+              onTap: () {
+                Navigator.push(
+                  context, MaterialPageRoute(
+                    builder: (context) => ChatScreen(alertId: alerts[index].id),
+                  ),
+                );
+              }
             ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 6.0),
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CheckinForm(
-                          alertId: alert.id,
-                        ),
-                      ),
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.health_and_safety,
-                    size: 24,
-                  ),
-                  label: const Text(
-                    "Realizar Check-in",
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(240, 40),
-                    backgroundColor: Colors.red,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ),
-              ),
-            )
-          ],
+          ]
         );
-      },
+      }
     );
   }
 }

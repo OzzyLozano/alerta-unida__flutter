@@ -7,9 +7,9 @@ import 'package:latlong2/latlong.dart';
 import 'dart:convert';
 import 'package:photo_view/photo_view.dart';
 
-import 'package:app_test/components/edificiogrande.dart';
-import 'package:app_test/components/porterias.dart';
-import 'package:app_test/components/puntoreunion.dart';
+import 'package:app_test/models/map/edificiogrande.dart';
+import 'package:app_test/models/map/porterias.dart';
+import 'package:app_test/models/map/puntoreunion.dart';
 
 class OSMMap extends StatefulWidget {
   const OSMMap({super.key});

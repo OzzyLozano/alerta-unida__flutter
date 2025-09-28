@@ -8,8 +8,20 @@ class BrigadeMember {
   final String createdAt;
   final String updatedAt;
   final String? emailVerifiedAt;
+  final String? phone;
 
-  const BrigadeMember({required this.id, required this.name, required this.lastname, required this.password, required this.email, required this.role, required this.createdAt, required this.updatedAt, required this.emailVerifiedAt});
+  const BrigadeMember({
+    required this.id,
+    required this.name,
+    required this.lastname,
+    required this.password,
+    required this.email,
+    required this.role,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.emailVerifiedAt,
+    required this.phone,
+  });
   
   factory BrigadeMember.fromJson(Map<String, dynamic> json) {
     return BrigadeMember(
@@ -21,7 +33,8 @@ class BrigadeMember {
       role: json['user']['role'] as String? ?? '',
       createdAt: json['user']['created_at'] as String? ?? '',
       updatedAt: json['user']['updated_at'] as String? ?? '',
-      emailVerifiedAt: json['user']['email_verified_at'] as String? ?? ''
+      emailVerifiedAt: json['user']['email_verified_at'] as String? ?? '',
+      phone: json['user']['phone'] as String? ?? '',
     );
   }
 }

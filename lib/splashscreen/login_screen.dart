@@ -1,4 +1,4 @@
-import 'package:app_test/homepage.dart';
+import 'package:app_test/main_page.dart';
 import 'package:flutter/material.dart';
 import './welcome_screen.dart';
 

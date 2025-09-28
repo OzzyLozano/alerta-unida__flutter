@@ -1,5 +1,6 @@
+import 'package:app_test/auth/brigade_login.dart';
 import 'package:app_test/auth/login.dart';
-import 'package:app_test/auth/register.dart';
+import 'package:app_test/components/button.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -48,22 +49,80 @@ class WelcomeScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            ElevatedButton(
-              onPressed: () { 
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
+            CmButton(
+              onPressed: () {
+                showModalBottomSheet<void>(
+                  context: context,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20.0),
+                    ),
+                  ),
+                  builder: (BuildContext context) => SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Spacer(),
+                        const Text(
+                          textAlign: TextAlign.center,
+                          '¿Eres brigadista o usuario?',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const Spacer(),
+                        Center(
+                          child: CmButton(
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
+                            },
+                            color: const Color.fromRGBO(120, 186, 60, 1),
+                            width: buttonWidth,
+                            height: 50,
+                            child: const Text(
+                              'Usuario',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20
+                              ),
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        Center(
+                          child: CmButton(
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const BrigadeLogin()));
+                            },
+                            color: const Color.fromRGBO(232, 107, 23, 1),
+                            width: buttonWidth,
+                            height: 50,
+                            child: const Text(
+                              'Brigadista',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20
+                              ),
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
+                  )
+                );
               },
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size(buttonWidth, 50),
-                backgroundColor: const Color.fromRGBO(120, 186, 60, 1),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
+              color: const Color.fromRGBO(120, 186, 60, 1),
+              width: buttonWidth,
+              height: 50,
               child: const Text(
-                'Inicia Sesión',
+                'Iniciar Sesión',
                 style: TextStyle(
-                  fontSize: 20,
                   color: Colors.white,
+                  fontSize: 20
                 ),
               ),
             ),
@@ -77,22 +136,16 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () { 
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPage()));
-              },
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size(buttonWidth, 50),
-                backgroundColor: const Color.fromRGBO(27, 113, 160, 1),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
+            CmButton(
+              onPressed: () {},
+              color: const Color.fromRGBO(27, 113, 160, 1),
+              width: buttonWidth,
+              height: 50,
               child: const Text(
-                'Regístrate',
+                'Entrar como invitado',
                 style: TextStyle(
-                  fontSize: 20,
                   color: Colors.white,
+                  fontSize: 20
                 ),
               ),
             ),

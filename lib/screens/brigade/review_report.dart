@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:app_test/components/report.dart';
+import 'package:app_test/components/button.dart';
+import 'package:app_test/models/report.dart';
 import 'package:app_test/config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -97,9 +98,7 @@ class _ReviewReportScreenState extends State<ReviewReportScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.check),
-                  label: const Text("Aceptar"),
+                CmButton(
                   onPressed: () async {
                     await authorizeReport(
                       context: context,
@@ -109,13 +108,31 @@ class _ReviewReportScreenState extends State<ReviewReportScreen> {
                       type: _selectedType,
                     );
                   },
+                  color: const Color.fromRGBO(120, 186, 60, 1),
+                  width: 120,
+                  height: 40,
+                  child: const Text(
+                    "Aceptar",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16
+                    ),
+                  ),
                 ),
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.close),
-                  label: const Text("Cancelar"),
+                CmButton(
                   onPressed: () async {
                     await cancelReport(context: context, widget.report.id);
                   },
+                  color: const Color.fromRGBO(232, 107, 23, 1),
+                  width: 120,
+                  height: 40,
+                  child: const Text(
+                    "Cancelar",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16
+                    ),
+                  ),
                 ),
               ],
             ),
