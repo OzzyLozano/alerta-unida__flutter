@@ -1,4 +1,5 @@
-import 'package:app_test/screens/profile.dart';
+import 'package:app_test/screens/brigade/profile.dart';
+import 'package:app_test/screens/user/profile.dart';
 import 'package:app_test/screens/user/alerts.dart';
 import 'package:app_test/screens/brigade/homepage.dart';
 import 'package:app_test/screens/brigade/reports.dart';
@@ -105,8 +106,7 @@ class _HomePageState extends State<HomePage> {
         isBrigade ? 
         const BrigadeHome() : const UserHome(),
         isBrigade ? 
-        const Profile() : 
-        const Profile(),
+        const BrigadeProfile() : const UserProfile(),
         isBrigade ? 
         const BrigadeReports() : const UserReports()
       ][_selectedIndex],

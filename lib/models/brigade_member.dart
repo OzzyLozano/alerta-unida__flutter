@@ -5,6 +5,7 @@ class BrigadeMember {
   final String email;
   final String password;
   final String role;
+  final List<String> training;
   final String createdAt;
   final String updatedAt;
   final String? emailVerifiedAt;
@@ -17,6 +18,7 @@ class BrigadeMember {
     required this.password,
     required this.email,
     required this.role,
+    required this.training,
     required this.createdAt,
     required this.updatedAt,
     required this.emailVerifiedAt,
@@ -24,17 +26,26 @@ class BrigadeMember {
   });
   
   factory BrigadeMember.fromJson(Map<String, dynamic> json) {
+    final trainingList = <String>[];
+    if (json['traininginfo'] != null && json['traininginfo'] is List) {
+      final training = json['traininginfo'][0]; // primer registro
+      if (training['evacuacion'] == true) trainingList.add("Evacuación");
+      if (training['prevencion_combate'] == true) trainingList.add("Prevención y Combate");
+      if (training['busqueda_rescate'] == true) trainingList.add("Búsqueda y Rescate");
+      if (training['primeros_auxilios'] == true) trainingList.add("Primeros Auxilios");
+    }
     return BrigadeMember(
-      id: json['user']['id'] as int,
-      name: json['user']['name'] as String? ?? '',
-      lastname: json['user']['lastname'] as String? ?? '',
-      email: json['user']['email'] as String? ?? '',
-      password: json['user']['password'] as String? ?? '',
-      role: json['user']['role'] as String? ?? '',
-      createdAt: json['user']['created_at'] as String? ?? '',
-      updatedAt: json['user']['updated_at'] as String? ?? '',
-      emailVerifiedAt: json['user']['email_verified_at'] as String? ?? '',
-      phone: json['user']['phone'] as String? ?? '',
+      id: json['id'] as int,
+      name: json['name'] as String? ?? '',
+      lastname: json['lastname'] as String? ?? '',
+      email: json['email'] as String? ?? '',
+      password: json['password'] as String? ?? '',
+      role: json['role'] as String? ?? '',
+      training: trainingList,
+      createdAt: json['created_at'] as String? ?? '',
+      updatedAt: json['updated_at'] as String? ?? '',
+      emailVerifiedAt: json['email_verified_at'] as String? ?? '',
+      phone: json['phone'] as String? ?? '',
     );
   }
 }

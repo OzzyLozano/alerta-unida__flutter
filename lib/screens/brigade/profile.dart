@@ -1,22 +1,22 @@
 import 'package:app_test/components/button.dart';
 import 'package:app_test/components/card.dart';
-import 'package:app_test/methods/fetch_user.dart';
-import 'package:app_test/models/user.dart';
+import 'package:app_test/methods/fetch_brigade_member.dart';
+import 'package:app_test/models/brigade_member.dart';
 import 'package:app_test/services/fcm.dart';
 import 'package:app_test/splashscreen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class BrigadeProfile extends StatefulWidget {
+  const BrigadeProfile({super.key});
   
   @override
-  State<Profile> createState() => _ProfileState();
+  State<BrigadeProfile> createState() => _BrigadeProfileState();
 }
 
-class _ProfileState extends State<Profile> {
-  late Future<User> futureUser;
+class _BrigadeProfileState extends State<BrigadeProfile> {
+  late Future<BrigadeMember> futureBrigadeMember;
 
   void logout() async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -30,15 +30,14 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     super.initState();
-    futureUser = fetchUser(http.Client());
+    futureBrigadeMember = fetchBrigadeMember(http.Client());
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       body: FutureBuilder(
-        future: futureUser,
+        future: futureBrigadeMember,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
@@ -48,8 +47,8 @@ class _ProfileState extends State<Profile> {
               ),
             );
           } else if (snapshot.hasData) {
-            final userData = snapshot.data!;
-            return Column(
+            final brigadeMemberData = snapshot.data!;
+            return ListView(
               children: [
                 CmCard(
                   children: [
@@ -59,10 +58,10 @@ class _ProfileState extends State<Profile> {
                           Icons.person,
                           size: 40,
                         ),
-                        const SizedBox(width: 12,),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            '${userData.name} ${userData.lastname}',
+                            '${brigadeMemberData.name} ${brigadeMemberData.lastname}',
                             softWrap: true,
                             overflow: TextOverflow.visible,
                             style: const TextStyle(
@@ -83,10 +82,10 @@ class _ProfileState extends State<Profile> {
                           Icons.email,
                           size: 40,
                         ),
-                        const SizedBox(width: 12,),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            userData.email,
+                            brigadeMemberData.email,
                             softWrap: true,
                             overflow: TextOverflow.visible,
                             style: const TextStyle(
@@ -107,12 +106,12 @@ class _ProfileState extends State<Profile> {
                           Icons.phone,
                           size: 40,
                         ),
-                        const SizedBox(width: 12,),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            userData.phone!.isEmpty 
+                            brigadeMemberData.phone!.isEmpty 
                               ? 'No hay un teléfono asociado' 
-                              : userData.phone!,
+                              : brigadeMemberData.phone!,
                             softWrap: true,
                             overflow: TextOverflow.visible,
                             style: const TextStyle(
@@ -125,7 +124,54 @@ class _ProfileState extends State<Profile> {
                     )
                   ],
                 ),
-                const Spacer(),
+                CmCard(
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.man,
+                          size: 40,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            brigadeMemberData.role == 'miembro' ? 'Brigadista' : 'Líder',
+                            softWrap: true,
+                            overflow: TextOverflow.visible,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.black
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+                CmCard(
+                  children: [
+                    ListTile(
+                      title: const Text(
+                        'Capacitaciones',
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: brigadeMemberData.training.map((capacitacion) {
+                          return Text(
+                            capacitacion,
+                            style: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          );
+                        }).toList(),
+                      )
+                    ),
+                  ],
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                   child: Center(
