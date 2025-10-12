@@ -147,7 +147,7 @@ class ReportsList extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.network(
-                '${AppConfig.apiUrl}/storage/${reports[index].img}',
+                reports[index].img,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.cover,
               ),

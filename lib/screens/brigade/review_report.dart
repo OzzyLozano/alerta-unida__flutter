@@ -53,7 +53,7 @@ class _ReviewReportScreenState extends State<ReviewReportScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network('${AppConfig.apiUrl}/storage/${widget.report.img}'),
+            Image.network(widget.report.img),
             const SizedBox(height: 24),
 
             TextField(
@@ -76,7 +76,7 @@ class _ReviewReportScreenState extends State<ReviewReportScreen> {
             const SizedBox(height: 8),
 
             DropdownButtonFormField<String>(
-              value: _selectedType,
+              initialValue: _selectedType,
               items: _types.map((type) {
                 return DropdownMenuItem<String>(
                   value: type,
