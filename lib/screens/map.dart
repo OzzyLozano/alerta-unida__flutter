@@ -1,15 +1,18 @@
+import 'package:app_test/methods/map/fetch_buildings.dart';
+import 'package:app_test/methods/map/fetch_gates.dart';
+import 'package:app_test/methods/map/fetch_meeting_points.dart';
+import 'package:app_test/models/map/building.dart';
+import 'package:app_test/models/map/gate.dart';
+import 'package:app_test/models/map/meeting_point.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_geojson/flutter_map_geojson.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
-import 'dart:convert';
 import 'package:photo_view/photo_view.dart';
-
-import 'package:app_test/models/map/edificiogrande.dart';
-import 'package:app_test/models/map/porterias.dart';
-import 'package:app_test/models/map/puntoreunion.dart';
 
 class OSMMap extends StatefulWidget {
   const OSMMap({super.key});
@@ -19,6 +22,9 @@ class OSMMap extends StatefulWidget {
 }
 
 class _OSMMapState extends State<OSMMap> {
+  late List<MeetingPoint> meetingPoints = [];
+  late List<Gate> gates = [];
+  late List<Building> buildings = [];
 
   bool _isSatellite = false; // ← Nuevo: alternar entre normal y satélite
 
@@ -30,10 +36,6 @@ class _OSMMapState extends State<OSMMap> {
   final LatLng _initialCoords = const LatLng(25.842444, -97.453585);
   final MapController _mapController = MapController();
   GeoJsonParser roadsGeoJson = GeoJsonParser();
-
-  List<EdificioGrande> edificiosgrandes = [];
-  List<Porterias> porterias = [];
-  List<PuntoReunion> puntosdereunion = [];
 
   // Lista para buscador
   List<Map<String, dynamic>> ubicacionesDestacadas = [];
@@ -48,9 +50,9 @@ class _OSMMapState extends State<OSMMap> {
 
   Future<void> _cargarTodo() async {
     await Future.wait([
-      loadEdificiosGrandes(),
-      loadPuntosdeReunion(),
-      loadPorterias(),
+      loadBuildings(),
+      loadMeetingPoints(),
+      loadGates(),
     ]);
     buildUbicacionesDestacadas();
   }
@@ -66,38 +68,53 @@ class _OSMMapState extends State<OSMMap> {
       setState(() {
         userLocation = newPos;
       });
-      _mapController.move(newPos, 18);
+      // _mapController.move(newPos, 18);
     });
+  }
+
+  Future<void> loadMeetingPoints() async {
+    try {
+      final data = await fetchMeetingPoints(http.Client());
+      setState(() {
+        meetingPoints = data;
+      });
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error cargando puntos de reunión: $e');
+      }
+    }
+  }
+
+  Future<void> loadGates() async {
+    try {
+      final data = await fetchGates(http.Client());
+      setState(() {
+        gates = data;
+      });
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error cargando porterias: $e');
+      }
+    }
+  }
+
+  Future<void> loadBuildings() async {
+    try {
+      final data = await fetchBuildings(http.Client());
+      setState(() {
+        buildings = data;
+      });
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error cargando edificios: $e');
+      }
+    }
   }
 
   Future<void> loadRoadsGeoJson() async {
     String roadsContent = await rootBundle.loadString('geojson/roads.geojson');
     roadsGeoJson.parseGeoJsonAsString(roadsContent);
     setState(() {});
-  }
-
-  Future<void> loadEdificiosGrandes() async {
-    String data = await rootBundle.loadString("assets/coordenadasgrande.json");
-    List<dynamic> jsonResult = json.decode(data);
-    setState(() {
-      edificiosgrandes = jsonResult.map((e) => EdificioGrande.fromJson(e)).toList();
-    });
-  }
-
-  Future<void> loadPuntosdeReunion() async {
-    String data = await rootBundle.loadString("assets/coordenadaspuntoreunion.json");
-    List<dynamic> jsonResult = json.decode(data);
-    setState(() {
-      puntosdereunion = jsonResult.map((e) => PuntoReunion.fromJson(e)).toList();
-    });
-  }
-
-  Future<void> loadPorterias() async {
-    String data = await rootBundle.loadString("assets/coordenadasPorterias.json");
-    List<dynamic> jsonResult = json.decode(data);
-    setState(() {
-      porterias = jsonResult.map((e) => Porterias.fromJson(e)).toList();
-    });
   }
 
   void _showFullPlantImage(String imagePath) {
@@ -121,21 +138,45 @@ class _OSMMapState extends State<OSMMap> {
 
   void buildUbicacionesDestacadas() {
     ubicacionesDestacadas.clear();
-    for (var e in edificiosgrandes) {
-      ubicacionesDestacadas.add({"nombre": e.nombre, "lat": e.lat, "lng": e.lng});
+    for (var building in buildings) {
+      ubicacionesDestacadas.add({"nombre": building.name, "lat": building.initialLatitude, "lng": building.initialLongitude});
     }
-    for (var e in puntosdereunion) {
-      ubicacionesDestacadas.add({"nombre": e.nombre, "lat": e.lat, "lng": e.lng});
+    for (var meetingPoint in meetingPoints) {
+      ubicacionesDestacadas.add({"nombre": meetingPoint.description, "lat": meetingPoint.latitude, "lng": meetingPoint.longitude});
     }
-    for (var e in porterias) {
-      ubicacionesDestacadas.add({"nombre": e.nombre, "lat": e.lat, "lng": e.lng});
+    for (var gate in gates) {
+      ubicacionesDestacadas.add({"nombre": gate.description, "lat": gate.latitude, "lng": gate.longitude});
     }
     setState(() {});
   }
 
   // ----------------- Marcadores -----------------
-  List<Marker> _buildEdificioGrandeMarkers() => edificiosgrandes.map((e) => Marker(
-    point: LatLng(e.lat, e.lng),
+  List<Marker> _buildMeetingPointsMarkers() => meetingPoints.map((meetingPoint) => Marker(
+    point: LatLng(meetingPoint.latitude, meetingPoint.longitude),
+    width: 50,
+    height: 50,
+    child: GestureDetector(
+      onTap: () => showModalBottomSheet(context: context, builder: (_) => _buildMeetingPointSheet(meetingPoint)),
+      child: const Icon(Icons.health_and_safety, color: Colors.greenAccent),
+    ),
+  )).toList();
+
+  Widget _buildMeetingPointSheet(MeetingPoint meetingPoint) => _simpleBottomModal(meetingPoint.description, meetingPoint.img);
+
+  List<Marker> _buildGateMarkers() => gates.map((gate) => Marker(
+    point: LatLng(gate.latitude, gate.longitude),
+    width: 50,
+    height: 50,
+    child: GestureDetector(
+      onTap: () => showModalBottomSheet(context: context, builder: (_) => _buildGateSheet(gate)),
+      child: const Icon(Icons.security, color: Colors.black),
+    ),
+  )).toList();
+
+  Widget _buildGateSheet(Gate gate) => _simpleBottomModal(gate.description, gate.img);
+
+  List<Marker> _buildEdificioGrandeMarkers() => buildings.map((building) => Marker(
+    point: LatLng(building.initialLatitude, building.initialLongitude),
     width: 80,
     height: 60,
     child: GestureDetector(
@@ -145,13 +186,13 @@ class _OSMMapState extends State<OSMMap> {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         ),
-        builder: (_) => _buildEdificioGrandeSheet(e),
+        builder: (_) => _buildBuildingSheet(building),
       ),
       child: Container(color: Colors.transparent),
     ),
   )).toList();
 
-  Widget _buildEdificioGrandeSheet(EdificioGrande e) {
+  Widget _buildBuildingSheet(Building building) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: SingleChildScrollView(
@@ -159,23 +200,23 @@ class _OSMMapState extends State<OSMMap> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Center(child: Text(e.nombre, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
+            Center(child: Text(building.name, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
             const SizedBox(height: 12),
-            if (e.imagenPrincipal.isNotEmpty)
+            if (building.img.isNotEmpty)
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.asset(e.imagenPrincipal, fit: BoxFit.cover, height: 180, width: double.infinity),
+                child: Image.asset(building.img, fit: BoxFit.cover, height: 180, width: double.infinity),
               ),
             const SizedBox(height: 12),
             const Divider(),
-            ...e.plantas.entries.map((entry) => ExpansionTile(
-              title: Text(entry.key, style: const TextStyle(fontWeight: FontWeight.bold)),
-              children: entry.value.map((ex) => ListTile(
+            ...building.floors.map((entry) => ExpansionTile(
+              title: Text(entry.id as String, style: const TextStyle(fontWeight: FontWeight.bold)),
+              children: entry.equipments.map((equipment) => ListTile(
                 leading: GestureDetector(
-                  onTap: () => _showFullPlantImage(ex.imagen),
-                  child: Image.asset(ex.imagen, width: 50, height: 50, fit: BoxFit.cover),
+                  onTap: () => _showFullPlantImage(equipment.img),
+                  child: Image.asset(equipment.img, width: 50, height: 50, fit: BoxFit.cover),
                 ),
-                title: Text(ex.descripcion),
+                title: Text(equipment.description),
               )).toList(),
             )),
             const SizedBox(height: 8),
@@ -189,31 +230,7 @@ class _OSMMapState extends State<OSMMap> {
     );
   }
 
-  List<Marker> _buildPuntosReunionMarkers() => puntosdereunion.map((e) => Marker(
-    point: LatLng(e.lat, e.lng),
-    width: 50,
-    height: 50,
-    child: GestureDetector(
-      onTap: () => showModalBottomSheet(context: context, builder: (_) => _buildPuntoReunionSheet(e)),
-      child: const Icon(Icons.health_and_safety, color: Colors.greenAccent),
-    ),
-  )).toList();
-
-  Widget _buildPuntoReunionSheet(PuntoReunion e) => _simpleSheet(e.nombre, e.imagenPrincipal);
-
-  List<Marker> _buildPorteriaMarkers() => porterias.map((e) => Marker(
-    point: LatLng(e.lat, e.lng),
-    width: 50,
-    height: 50,
-    child: GestureDetector(
-      onTap: () => showModalBottomSheet(context: context, builder: (_) => _buildPorteriasSheet(e)),
-      child: const Icon(Icons.security, color: Colors.black),
-    ),
-  )).toList();
-
-  Widget _buildPorteriasSheet(Porterias e) => _simpleSheet(e.nombre, e.imagenPrincipal);
-
-  Widget _simpleSheet(String nombre, String imagen) {
+  Widget _simpleBottomModal(String nombre, String imagen) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -288,9 +305,9 @@ class _OSMMapState extends State<OSMMap> {
                         ),
                       ],
                     ),
-                  if (edificiosgrandes.isNotEmpty) MarkerLayer(markers: _buildEdificioGrandeMarkers()),
-                  if (porterias.isNotEmpty) MarkerLayer(markers: _buildPorteriaMarkers()),
-                  if (puntosdereunion.isNotEmpty) MarkerLayer(markers: _buildPuntosReunionMarkers()),
+                  if (buildings.isNotEmpty) MarkerLayer(markers: _buildEdificioGrandeMarkers()),
+                  if (gates.isNotEmpty) MarkerLayer(markers: _buildGateMarkers()),
+                  if (meetingPoints.isNotEmpty) MarkerLayer(markers: _buildMeetingPointsMarkers()),
                 ],
               ),
             ),
