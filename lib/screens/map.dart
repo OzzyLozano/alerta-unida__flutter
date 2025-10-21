@@ -126,7 +126,7 @@ class _OSMMapState extends State<OSMMap> {
         child: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: PhotoView(
-            imageProvider: AssetImage(imagePath),
+            imageProvider: NetworkImage(imagePath),
             backgroundDecoration: const BoxDecoration(color: Colors.black),
             minScale: PhotoViewComputedScale.contained,
             maxScale: PhotoViewComputedScale.covered * 3.0,
@@ -205,16 +205,16 @@ class _OSMMapState extends State<OSMMap> {
             if (building.img.isNotEmpty)
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.asset(building.img, fit: BoxFit.cover, height: 180, width: double.infinity),
+                child: Image.network(building.img, fit: BoxFit.cover, height: 180, width: double.infinity),
               ),
             const SizedBox(height: 12),
             const Divider(),
             ...building.floors.map((entry) => ExpansionTile(
-              title: Text(entry.id as String, style: const TextStyle(fontWeight: FontWeight.bold)),
+              title: Text(entry.level, style: const TextStyle(fontWeight: FontWeight.bold)),
               children: entry.equipments.map((equipment) => ListTile(
                 leading: GestureDetector(
                   onTap: () => _showFullPlantImage(equipment.img),
-                  child: Image.asset(equipment.img, width: 50, height: 50, fit: BoxFit.cover),
+                  child: Image.network(equipment.img, width: 50, height: 50, fit: BoxFit.cover),
                 ),
                 title: Text(equipment.description),
               )).toList(),
@@ -237,9 +237,17 @@ class _OSMMapState extends State<OSMMap> {
         Text(nombre, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
         const SizedBox(height: 12),
         if (imagen.isNotEmpty)
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(imagen, fit: BoxFit.cover, height: 180, width: double.infinity),
+          Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 360,
+                  maxHeight: 200,
+                ),
+                child: Image.network(imagen, fit: BoxFit.contain, height: double.infinity, width: double.infinity),
+              ),
+            ),
           ),
         const SizedBox(height: 8),
         Align(
