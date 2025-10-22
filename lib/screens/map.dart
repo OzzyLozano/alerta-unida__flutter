@@ -139,7 +139,7 @@ class _OSMMapState extends State<OSMMap> {
   void buildUbicacionesDestacadas() {
     ubicacionesDestacadas.clear();
     for (var building in buildings) {
-      ubicacionesDestacadas.add({"nombre": building.name, "lat": building.initialLatitude, "lng": building.initialLongitude});
+      ubicacionesDestacadas.add({"nombre": building.name, "lat": building.latitude_1, "lng": building.longitude_1});
     }
     for (var meetingPoint in meetingPoints) {
       ubicacionesDestacadas.add({"nombre": meetingPoint.description, "lat": meetingPoint.latitude, "lng": meetingPoint.longitude});
@@ -176,7 +176,7 @@ class _OSMMapState extends State<OSMMap> {
   Widget _buildGateSheet(Gate gate) => _simpleBottomModal(gate.description, gate.img);
 
   List<Marker> _buildEdificioGrandeMarkers() => buildings.map((building) => Marker(
-    point: LatLng(building.initialLatitude, building.initialLongitude),
+    point: LatLng(building.latitude_1, building.longitude_1),
     width: 80,
     height: 60,
     child: GestureDetector(

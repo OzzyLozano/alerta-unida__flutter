@@ -1,24 +1,32 @@
 class Building {
   final int id;
   final String name;
-  final double initialLatitude;
-  final double initialLongitude;
-  final double finalLatitude;
-  final double finalLongitude;
+  final double latitude_1;
+  final double longitude_1;
+  final double latitude_2;
+  final double longitude_2;
+  final double latitude_3;
+  final double longitude_3;
+  final double latitude_4;
+  final double longitude_4;
   final String img;
   final List<Floor> floors;
 
-  Building({required this.id, required this.name, required this.initialLatitude, required this.initialLongitude, required this.finalLatitude, required this.finalLongitude, required this.img, required this.floors});
+  Building({required this.latitude_1, required this.longitude_1, required this.latitude_2, required this.longitude_2, required this.latitude_3, required this.longitude_3, required this.latitude_4, required this.longitude_4, required this.id, required this.name, required this.img, required this.floors});
 
   factory Building.fromJson(Map<String, dynamic> json) {
     return Building(
       id: json['id'] as int,
       name: json['name'] as String? ?? 'Sin Nombre',
       img: json['img_path'] as String? ?? 'No se encontró una imagen',
-      initialLatitude: double.tryParse(json['initial_latitude'].toString()) ?? 0.0,
-      initialLongitude: double.tryParse(json['initial_longitude'].toString()) ?? 0.0,
-      finalLatitude: double.tryParse(json['final_latitude'].toString()) ?? 0.0,
-      finalLongitude: double.tryParse(json['final_longitude'].toString()) ?? 0.0,
+      latitude_1: double.tryParse(json['latitude_1'].toString()) ?? 0.0,
+      longitude_1: double.tryParse(json['longitude_1'].toString()) ?? 0.0,
+      latitude_2: double.tryParse(json['latitude_2'].toString()) ?? 0.0,
+      longitude_2: double.tryParse(json['longitude_2'].toString()) ?? 0.0,
+      latitude_3: double.tryParse(json['latitude_3'].toString()) ?? 0.0,
+      longitude_3: double.tryParse(json['longitude_3'].toString()) ?? 0.0,
+      latitude_4: double.tryParse(json['latitude_4'].toString()) ?? 0.0,
+      longitude_4: double.tryParse(json['longitude_4'].toString()) ?? 0.0,
       floors: (json['floors'] as List<dynamic>?)?.map((e) => Floor.fromJson(e)).toList() ?? [],
     );
   }
