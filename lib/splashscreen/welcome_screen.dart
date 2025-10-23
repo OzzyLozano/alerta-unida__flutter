@@ -28,7 +28,7 @@ class WelcomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
               child: Image(
-                image: const AssetImage('assets/alerta_unida_isotipo.png'),
+                image: const AssetImage('assets/LogoAlertaUnida.png'),
                 width: logoSize,
                 height: logoSize,
                 fit: BoxFit.contain,
