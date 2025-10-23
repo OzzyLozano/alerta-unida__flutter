@@ -34,6 +34,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
@@ -45,7 +46,7 @@ flutter:
     - geojson/power_line_columns.geojson
     - geojson/power_lines.geojson
     - geojson/roads.geojson
-    - assets/alerta_unida_isotipo.png
+    - assets/LogoAlertaUnida.png
     - assets/coordenadasvertical.json
     - assets/coordenadasPorterias.json
     - assets/coordenadasgrande.json
@@ -105,6 +106,20 @@ flutter:
     - assets/puntosdereunion/porteriamaestros.jpg
     - assets/puntosdereunion/porteriaestudiantes.jpg
     - android/app/src/main/res/raw/alert_sound.mp3
+    - assets/chalecoverde.png
+    - assets/chalecoblanco.png
+    - assets/chalecorojo.png
+    - assets/chaleco-naranja.png
+    - assets/chalecoazul.png
+    - assets/map.png
+    - assets/satellite.png
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/LogoAlertaUnida.png"
+  adaptive_icon_background: "assets/LogoAlertaUnida.png"
+
 
 
 
