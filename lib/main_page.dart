@@ -21,52 +21,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 2;
   SharedPreferences? preferences;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    NavigationDestination(
-      selectedIcon: Icon(Icons.notifications_outlined),
-      icon: Badge(child: Icon(Icons.notifications)),
-      label: 'Alertas',
-    ),
-    NavigationDestination(
-      selectedIcon: Icon(Icons.fmd_good_outlined),
-      icon: Icon(Icons.fmd_good), 
-      label: 'Mapa',
-    ),
-    NavigationDestination(
-      selectedIcon: Icon(Icons.home_outlined),
-      icon: Icon(Icons.home),
-      label: 'Inicio',
-    ),
-    NavigationDestination(
-      selectedIcon: Icon(Icons.account_circle_outlined),
-      icon: Icon(Icons.account_circle),
-      label: 'Perfil',
-    ),
-    NavigationDestination(
-      selectedIcon: Icon(Icons.health_and_safety_outlined),
-      icon: Icon(Icons.health_and_safety), 
-      label: 'Reportes',
-    ),
-  ];
-  static const List<String> appTitlesText = [
-    'Alertas',
-    'Mapa',
-    'Bienvenido/a',
-    'Perfil',
-    'Reportes',
-  ];
 
-  static final List<Widget> appTitle = appTitlesText.map((title) {
-    return Text(
-      title,
-      textAlign: TextAlign.center,
-    );
-  }).toList();
-  void onTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   void initState() {
@@ -77,6 +32,12 @@ class _HomePageState extends State<HomePage> {
   Future<void> _initializePreferences() async {
     preferences = await SharedPreferences.getInstance();
     setState(() {});
+
+  }
+  void onTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   bool get isBrigade => preferences?.getBool('isBrigadeMember') ?? false;
@@ -85,29 +46,77 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xfff3f3f3),
-      appBar: AppBar(
-        leading: null,
+      appBar: _selectedIndex == 1
+      ? null
+      : AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        title: appTitle[_selectedIndex],
+        title: Text(
+          _selectedIndex == 2
+              ? 'Bienvenido/a'
+              : _selectedIndex == 0
+              ? 'Alertas'
+              : _selectedIndex == 3
+              ? 'Perfil'
+              : 'Reportes',
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontFamily: 'RobotoMono',
+            fontSize: 20,
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                offset: Offset(2, 2),
+                blurRadius: 3,
+                color: Colors.grey,
+              ),
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index) {
-          onTapped(index);
-        },
-        destinations: _widgetOptions,
+        onDestinationSelected: onTapped,
         selectedIndex: _selectedIndex,
         height: 80,
-        ),
+        destinations: const [
+          NavigationDestination(
+            selectedIcon: Icon(Icons.notifications_outlined),
+            icon: Badge(child: Icon(Icons.notifications)),
+            label: 'Alertas',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.fmd_good_outlined),
+            icon: Icon(Icons.fmd_good),
+            label: 'Mapa',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.home),
+            label: 'Inicio',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.account_circle_outlined),
+            icon: Icon(Icons.account_circle),
+            label: 'Perfil',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.health_and_safety_outlined),
+            icon: Icon(Icons.health_and_safety),
+            label: 'Reportes',
+          ),
+        ],
+      ),
+
       body: <Widget>[
-        isBrigade ? 
+        isBrigade ?
         const ManageAlerts() : const Alerts(),
         const OSMMap(),
-        isBrigade ? 
+        isBrigade ?
         const BrigadeHome() : const UserHome(),
-        isBrigade ? 
+        isBrigade ?
         const BrigadeProfile() : const UserProfile(),
-        isBrigade ? 
+        isBrigade ?
         const BrigadeReports() : const UserReports()
       ][_selectedIndex],
     );
