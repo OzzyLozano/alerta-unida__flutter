@@ -61,17 +61,16 @@ class _HomePageState extends State<HomePage> {
               : 'Reportes',
           textAlign: TextAlign.center,
           style: const TextStyle(
-            fontFamily: 'RobotoMono',
-            fontSize: 20,
+            fontSize: 32,
             color: Colors.black87,
             fontWeight: FontWeight.bold,
-            shadows: [
-              Shadow(
-                offset: Offset(2, 2),
-                blurRadius: 3,
-                color: Colors.grey,
-              ),
-            ],
+            // shadows: [
+            //   Shadow(
+            //     offset: Offset(2, 2),
+            //     blurRadius: 3,
+            //     color: Colors.grey,
+            //   ),
+            // ],
           ),
         ),
       ),
