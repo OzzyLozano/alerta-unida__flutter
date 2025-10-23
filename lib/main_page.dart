@@ -4,7 +4,7 @@ import 'package:app_test/screens/user/alerts.dart';
 import 'package:app_test/screens/brigade/homepage.dart';
 import 'package:app_test/screens/brigade/reports.dart';
 import 'package:app_test/screens/brigade/alerts.dart';
-import 'package:app_test/screens/map.dart';
+import 'package:app_test/screens/map/map.dart';
 import 'package:app_test/screens/user/homepage.dart';
 import 'package:app_test/screens/user/reports.dart';
 import 'package:flutter/material.dart';

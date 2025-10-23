@@ -1,41 +1,5 @@
 [
   {
-    "nombre": "Centro de Computo",
-    "lat": 25.842860582885045,
-    "lng": -97.45459742628637,
-    "imagenPrincipal": "assets/Edificios/sistemas.jpg",
-    "plantas": {
-      "Planta Baja": [
-        { "imagen": "assets/extintores/plantabajasistemas.jpg", "descripcion": "2 🧯PQS" }
-      ],
-      "Planta Alta": [
-        { "imagen": "assets/extintores/plantaaltasistemas.jpg", "descripcion": "1 🧯PQS" }
-      ]
-    }
-  },
-  {
-    "nombre": "Biblioteca",
-    "lat": 25.843056164053205,
-    "lng": -97.45383646615647,
-    "imagenPrincipal": "assets/Edificios/centrodeinformacion.jpg",
-    "plantas": {
-      "General": [
-        { "imagen": "assets/extintores/img.png", "descripcion": "2 🧯PQS" }
-      ]
-    }
-  },
-  {
-    "nombre": "Cafetería",
-    "lat": 25.84305729237811,
-    "lng": -97.45421132432467,
-    "imagenPrincipal": "assets/Edificios/cafeteria.jpg",
-    "plantas": {
-      "General": [
-        { "imagen": "assets/extintores/plantabajacafeteria.jpg", "descripcion": "2 🧯PQS" }
-      ]
-    }
-  },
-  {
     "nombre": "Laboratorio de Mecatronica",
     "lat": 25.84152045936866,
     "lng": -97.45288077746697,

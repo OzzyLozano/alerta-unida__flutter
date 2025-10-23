@@ -1,18 +1,16 @@
-import 'package:app_test/methods/map/fetch_buildings.dart';
-import 'package:app_test/methods/map/fetch_gates.dart';
-import 'package:app_test/methods/map/fetch_meeting_points.dart';
 import 'package:app_test/models/map/building.dart';
 import 'package:app_test/models/map/gate.dart';
 import 'package:app_test/models/map/meeting_point.dart';
+import 'package:app_test/screens/map/components/buildings.dart';
+import 'package:app_test/screens/map/components/gates.dart';
+import 'package:app_test/screens/map/components/meeting_points.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_geojson/flutter_map_geojson.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
-import 'package:photo_view/photo_view.dart';
 
 class OSMMap extends StatefulWidget {
   const OSMMap({super.key});
@@ -49,12 +47,23 @@ class _OSMMapState extends State<OSMMap> {
   }
 
   Future<void> _cargarTodo() async {
-    await Future.wait([
-      loadBuildings(),
-      loadMeetingPoints(),
-      loadGates(),
-    ]);
-    buildUbicacionesDestacadas();
+    try {
+      final loadedBuildings = await loadBuildings();
+      final loadedGates = await loadGates();
+      final loadedMeetingPoints = await loadMeetingPoints();
+
+      setState(() {
+        buildings = loadedBuildings;
+        gates = loadedGates;
+        meetingPoints = loadedMeetingPoints;
+      });
+
+      buildUbicacionesDestacadas();
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error cargando datos: $e');
+      }
+    }
   }
 
   void startTrackingUserLocation() {
@@ -72,68 +81,10 @@ class _OSMMapState extends State<OSMMap> {
     });
   }
 
-  Future<void> loadMeetingPoints() async {
-    try {
-      final data = await fetchMeetingPoints(http.Client());
-      setState(() {
-        meetingPoints = data;
-      });
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error cargando puntos de reunión: $e');
-      }
-    }
-  }
-
-  Future<void> loadGates() async {
-    try {
-      final data = await fetchGates(http.Client());
-      setState(() {
-        gates = data;
-      });
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error cargando porterias: $e');
-      }
-    }
-  }
-
-  Future<void> loadBuildings() async {
-    try {
-      final data = await fetchBuildings(http.Client());
-      setState(() {
-        buildings = data;
-      });
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error cargando edificios: $e');
-      }
-    }
-  }
-
   Future<void> loadRoadsGeoJson() async {
     String roadsContent = await rootBundle.loadString('geojson/roads.geojson');
     roadsGeoJson.parseGeoJsonAsString(roadsContent);
     setState(() {});
-  }
-
-  void _showFullPlantImage(String imagePath) {
-    showDialog(
-      context: context,
-      builder: (_) => Dialog(
-        backgroundColor: Colors.transparent,
-        insetPadding: const EdgeInsets.all(0),
-        child: GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: PhotoView(
-            imageProvider: NetworkImage(imagePath),
-            backgroundDecoration: const BoxDecoration(color: Colors.black),
-            minScale: PhotoViewComputedScale.contained,
-            maxScale: PhotoViewComputedScale.covered * 3.0,
-          ),
-        ),
-      ),
-    );
   }
 
   void buildUbicacionesDestacadas() {
@@ -141,121 +92,13 @@ class _OSMMapState extends State<OSMMap> {
     for (var building in buildings) {
       ubicacionesDestacadas.add({"nombre": building.name, "lat": building.latitude_1, "lng": building.longitude_1});
     }
-    for (var meetingPoint in meetingPoints) {
-      ubicacionesDestacadas.add({"nombre": meetingPoint.description, "lat": meetingPoint.latitude, "lng": meetingPoint.longitude});
-    }
     for (var gate in gates) {
       ubicacionesDestacadas.add({"nombre": gate.description, "lat": gate.latitude, "lng": gate.longitude});
     }
+    for (var meetingPoint in meetingPoints) {
+      ubicacionesDestacadas.add({"nombre": meetingPoint.description, "lat": meetingPoint.latitude, "lng": meetingPoint.longitude});
+    }
     setState(() {});
-  }
-
-  // ----------------- Marcadores -----------------
-  List<Marker> _buildMeetingPointsMarkers() => meetingPoints.map((meetingPoint) => Marker(
-    point: LatLng(meetingPoint.latitude, meetingPoint.longitude),
-    width: 50,
-    height: 50,
-    child: GestureDetector(
-      onTap: () => showModalBottomSheet(context: context, builder: (_) => _buildMeetingPointSheet(meetingPoint)),
-      child: const Icon(Icons.health_and_safety, color: Colors.greenAccent),
-    ),
-  )).toList();
-
-  Widget _buildMeetingPointSheet(MeetingPoint meetingPoint) => _simpleBottomModal(meetingPoint.description, meetingPoint.img);
-
-  List<Marker> _buildGateMarkers() => gates.map((gate) => Marker(
-    point: LatLng(gate.latitude, gate.longitude),
-    width: 50,
-    height: 50,
-    child: GestureDetector(
-      onTap: () => showModalBottomSheet(context: context, builder: (_) => _buildGateSheet(gate)),
-      child: const Icon(Icons.security, color: Colors.black),
-    ),
-  )).toList();
-
-  Widget _buildGateSheet(Gate gate) => _simpleBottomModal(gate.description, gate.img);
-
-  List<Marker> _buildEdificioGrandeMarkers() => buildings.map((building) => Marker(
-    point: LatLng(building.latitude_1, building.longitude_1),
-    width: 80,
-    height: 60,
-    child: GestureDetector(
-      onTap: () => showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-        ),
-        builder: (_) => _buildBuildingSheet(building),
-      ),
-      child: Container(color: Colors.transparent),
-    ),
-  )).toList();
-
-  Widget _buildBuildingSheet(Building building) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Center(child: Text(building.name, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
-            const SizedBox(height: 12),
-            if (building.img.isNotEmpty)
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.network(building.img, fit: BoxFit.cover, height: 180, width: double.infinity),
-              ),
-            const SizedBox(height: 12),
-            const Divider(),
-            ...building.floors.map((entry) => ExpansionTile(
-              title: Text(entry.level, style: const TextStyle(fontWeight: FontWeight.bold)),
-              children: entry.equipments.map((equipment) => ListTile(
-                leading: GestureDetector(
-                  onTap: () => _showFullPlantImage(equipment.img),
-                  child: Image.network(equipment.img, width: 50, height: 50, fit: BoxFit.cover),
-                ),
-                title: Text(equipment.description),
-              )).toList(),
-            )),
-            const SizedBox(height: 8),
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _simpleBottomModal(String nombre, String imagen) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        Text(nombre, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-        const SizedBox(height: 12),
-        if (imagen.isNotEmpty)
-          Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 360,
-                  maxHeight: 200,
-                ),
-                child: Image.network(imagen, fit: BoxFit.contain, height: double.infinity, width: double.infinity),
-              ),
-            ),
-          ),
-        const SizedBox(height: 8),
-        Align(
-          alignment: Alignment.centerRight,
-          child: TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cerrar")),
-        )
-      ]),
-    );
   }
 
   @override
@@ -275,7 +118,7 @@ class _OSMMapState extends State<OSMMap> {
                 mapController: _mapController,
                 options: MapOptions(
                   initialCenter: _initialCoords,
-                  initialZoom: 18,
+                  initialZoom: 17,
                   maxZoom: 20,
                   interactionOptions: const InteractionOptions(
                     flags: InteractiveFlag.drag | InteractiveFlag.pinchZoom | InteractiveFlag.scrollWheelZoom,
@@ -287,11 +130,26 @@ class _OSMMapState extends State<OSMMap> {
                   ),
                   if (roadsGeoJson.polygons.isNotEmpty)
                     PolygonLayer(
+                      polygons: buildings.map((building) {
+                        return Polygon(
+                          points: [
+                            LatLng(building.latitude_1, building.longitude_1),
+                            LatLng(building.latitude_2, building.longitude_2),
+                            LatLng(building.latitude_3, building.longitude_3),
+                            LatLng(building.latitude_4, building.longitude_4),
+                          ],
+                          color: Colors.lightBlue.withOpacity(0.5),
+                          borderStrokeWidth: 2,
+                          borderColor: Colors.black,
+                        );
+                      }).toList(),
+                    ),
+                    PolygonLayer(
                       polygons: roadsGeoJson.polygons
                           .map((p) => Polygon(
                         points: p.points,
                         color: Colors.grey.withOpacity(0.5),
-                        borderColor: Colors.black,
+                        borderColor: Colors.black.withOpacity(0.5),
                         borderStrokeWidth: 2,
                       ))
                           .toList(),
@@ -309,13 +167,13 @@ class _OSMMapState extends State<OSMMap> {
                           point: userLocation!,
                           width: 20,
                           height: 20,
-                          child: const Icon(Icons.circle, size: 15, color: Colors.red),
+                          child: const Icon(Icons.circle, size: 15, color: Colors.blue),
                         ),
                       ],
                     ),
-                  if (buildings.isNotEmpty) MarkerLayer(markers: _buildEdificioGrandeMarkers()),
-                  if (gates.isNotEmpty) MarkerLayer(markers: _buildGateMarkers()),
-                  if (meetingPoints.isNotEmpty) MarkerLayer(markers: _buildMeetingPointsMarkers()),
+                  if (buildings.isNotEmpty) MarkerLayer(markers: buildBuildingsMarkers(context, buildings)),
+                  if (gates.isNotEmpty) MarkerLayer(markers: buildGateMarkers(context, gates)),
+                  if (meetingPoints.isNotEmpty) MarkerLayer(markers: BuildMeetingPointsMarkers(context, meetingPoints)),
                 ],
               ),
             ),
