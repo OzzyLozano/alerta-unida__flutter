@@ -47,7 +47,6 @@ class _OSMMapState extends State<OSMMap> {
     _cargarTodo();
     startTrackingUserLocation();
   }
-
   Future<void> _cargarTodo() async {
     await Future.wait([
       loadBuildings(),
@@ -126,7 +125,7 @@ class _OSMMapState extends State<OSMMap> {
         child: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: PhotoView(
-            imageProvider: AssetImage(imagePath),
+            imageProvider: NetworkImage(imagePath),
             backgroundDecoration: const BoxDecoration(color: Colors.black),
             minScale: PhotoViewComputedScale.contained,
             maxScale: PhotoViewComputedScale.covered * 3.0,
@@ -151,7 +150,7 @@ class _OSMMapState extends State<OSMMap> {
   }
 
   // ----------------- Marcadores -----------------
-  List<Marker> _buildMeetingPointsMarkers() => meetingPoints.map((meetingPoint) => Marker(
+    List<Marker> _buildMeetingPointsMarkers() => meetingPoints.map((meetingPoint) => Marker(
     point: LatLng(meetingPoint.latitude, meetingPoint.longitude),
     width: 50,
     height: 50,
@@ -205,16 +204,16 @@ class _OSMMapState extends State<OSMMap> {
             if (building.img.isNotEmpty)
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.asset(building.img, fit: BoxFit.cover, height: 180, width: double.infinity),
+                child: Image.network(building.img, fit: BoxFit.cover, height: 180, width: double.infinity),
               ),
             const SizedBox(height: 12),
             const Divider(),
             ...building.floors.map((entry) => ExpansionTile(
-              title: Text(entry.id as String, style: const TextStyle(fontWeight: FontWeight.bold)),
+              title: Text(entry.level, style: const TextStyle(fontWeight: FontWeight.bold)),
               children: entry.equipments.map((equipment) => ListTile(
                 leading: GestureDetector(
                   onTap: () => _showFullPlantImage(equipment.img),
-                  child: Image.asset(equipment.img, width: 50, height: 50, fit: BoxFit.cover),
+                  child: Image.network(equipment.img, width: 50, height: 50, fit: BoxFit.cover),
                 ),
                 title: Text(equipment.description),
               )).toList(),
@@ -237,10 +236,19 @@ class _OSMMapState extends State<OSMMap> {
         Text(nombre, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
         const SizedBox(height: 12),
         if (imagen.isNotEmpty)
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(imagen, fit: BoxFit.cover, height: 180, width: double.infinity),
-          ),
+          Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 360,
+                  maxHeight: 200,
+                ),
+                child: Image.network(imagen, fit: BoxFit.contain, height: double.infinity, width: double.infinity),
+              ),
+            ),
+
+         ),
         const SizedBox(height: 8),
         Align(
           alignment: Alignment.centerRight,
@@ -254,16 +262,7 @@ class _OSMMapState extends State<OSMMap> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.yellow.shade200, width: 2),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: FlutterMap(
+         FlutterMap(
                 mapController: _mapController,
                 options: MapOptions(
                   initialCenter: _initialCoords,
@@ -301,7 +300,7 @@ class _OSMMapState extends State<OSMMap> {
                           point: userLocation!,
                           width: 20,
                           height: 20,
-                          child: const Icon(Icons.circle, size: 15, color: Colors.red),
+                          child: const Icon(Icons.circle, size: 15, color: Colors.blue),
                         ),
                       ],
                     ),
@@ -310,21 +309,23 @@ class _OSMMapState extends State<OSMMap> {
                   if (meetingPoints.isNotEmpty) MarkerLayer(markers: _buildMeetingPointsMarkers()),
                 ],
               ),
-            ),
-          ),
-        ),
         // Botón alternar mapa normal/satélite
         Positioned(
           bottom: 40,
           right: 24,
           child: FloatingActionButton(
             backgroundColor: Colors.blueGrey,
-            child: Icon(_isSatellite ? Icons.map : Icons.satellite),
             onPressed: () {
               setState(() {
-                _isSatellite = !_isSatellite;
+              _isSatellite = !_isSatellite;
               });
             },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+              _isSatellite ? 'assets/map.png' : 'assets/satellite.png',
+            ),
+            ),
           ),
         ),
 
