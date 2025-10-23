@@ -45,7 +45,6 @@ class _OSMMapState extends State<OSMMap> {
     _cargarTodo();
     startTrackingUserLocation();
   }
-
   Future<void> _cargarTodo() async {
     try {
       final loadedBuildings = await loadBuildings();
@@ -105,16 +104,7 @@ class _OSMMapState extends State<OSMMap> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.yellow.shade200, width: 2),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: FlutterMap(
+         FlutterMap(
                 mapController: _mapController,
                 options: MapOptions(
                   initialCenter: _initialCoords,
@@ -176,21 +166,23 @@ class _OSMMapState extends State<OSMMap> {
                   if (meetingPoints.isNotEmpty) MarkerLayer(markers: BuildMeetingPointsMarkers(context, meetingPoints)),
                 ],
               ),
-            ),
-          ),
-        ),
         // Botón alternar mapa normal/satélite
         Positioned(
           bottom: 40,
           right: 24,
           child: FloatingActionButton(
             backgroundColor: Colors.blueGrey,
-            child: Icon(_isSatellite ? Icons.map : Icons.satellite),
             onPressed: () {
               setState(() {
-                _isSatellite = !_isSatellite;
+              _isSatellite = !_isSatellite;
               });
             },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+              _isSatellite ? 'assets/map.png' : 'assets/satellite.png',
+            ),
+            ),
           ),
         ),
 

@@ -76,7 +76,7 @@ class _ReviewReportScreenState extends State<ReviewReportScreen> {
             const SizedBox(height: 8),
 
             DropdownButtonFormField<String>(
-              initialValue: _selectedType,
+              value: _selectedType,
               items: _types.map((type) {
                 return DropdownMenuItem<String>(
                   value: type,

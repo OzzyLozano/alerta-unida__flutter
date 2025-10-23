@@ -10,7 +10,7 @@
 
 
     <application
-        android:label="app_test"
+        android:label="Alerta Unida"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
