@@ -2,6 +2,7 @@ import 'package:app_test/auth/brigade_login.dart';
 import 'package:app_test/auth/login.dart';
 import 'package:app_test/components/button.dart';
 import 'package:flutter/material.dart';
+import 'package:app_test/auth/register.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -137,15 +138,22 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             CmButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RegisterPage(),
+                  ),
+                );
+              },
               color: const Color.fromRGBO(27, 113, 160, 1),
               width: buttonWidth,
               height: 50,
               child: const Text(
-                'Entrar como invitado',
+                'Registrate',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20
+                  fontSize: 20,
                 ),
               ),
             ),
